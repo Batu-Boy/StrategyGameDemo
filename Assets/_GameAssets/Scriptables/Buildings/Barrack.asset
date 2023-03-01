@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06e6c1e06c04e1f85b78a35d8073baa, type: 3}
+  m_Name: Barrack
+  m_EditorClassIdentifier: 
+  _guid:
+    rid: 3154426941954851794
+  StartWidth: 4
+  StartHeight: 4
+  StartHealth: 100
+  Sprite: {fileID: 21300000, guid: 8a916e782a8f04db2a1c3233d43565b9, type: 3}
+  EntityPrefab: {fileID: 2430926526737883873, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
+  Productions:
+  - {fileID: 11400000, guid: 406228cc84283450e841284de0a6909a, type: 2}
+  - {fileID: 11400000, guid: 05fa5023fcd0c418a93ce760d97211d2, type: 2}
+  - {fileID: 11400000, guid: 6db92e19c7d3547feae20379a89697a4, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 3154426941954851794
+      type: {class: Guid, ns: , asm: Assembly-CSharp}
+      data:
+        guid: 8cc141e93da5048c89bca0f9858d72d4

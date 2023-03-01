@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f08bc1915c144afc8ce62a8cb0ea56d2, type: 3}
+  m_Name: Archer 2
+  m_EditorClassIdentifier: 
+  _guid:
+    rid: 3154426941954851799
+  StartWidth: 1
+  StartHeight: 1
+  StartHealth: 5
+  Sprite: {fileID: 21300000, guid: 70156abbdd200462e9946ed0d0f7a175, type: 3}
+  EntityPrefab: {fileID: 2393228360990086294, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
+  Damage: 2
+  Range: 2
+  AttackSpeed: 1.125
+  references:
+    version: 2
+    RefIds:
+    - rid: 3154426941954851799
+      type: {class: Guid, ns: , asm: Assembly-CSharp}
+      data:
+        guid: 17df2176041484f2b865bc5810f24654
