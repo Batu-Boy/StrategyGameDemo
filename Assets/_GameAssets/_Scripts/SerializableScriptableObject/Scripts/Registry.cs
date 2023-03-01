@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,14 +9,6 @@ public abstract class Registry<T> : ScriptableObject where T : SerializableScrip
 
     public T FindByGuid(Guid guid)
     {
-        foreach (var type in registeringTypes)
-        {
-            if (type.Guid == guid)
-            {
-                return type;
-            }
-        }
-
-        return null;
+        return registeringTypes.FirstOrDefault(type => type.Guid == guid);
     }
 }

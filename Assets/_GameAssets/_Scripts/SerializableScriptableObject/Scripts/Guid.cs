@@ -14,9 +14,9 @@ public class Guid
         guid = id;
     }
 
-    public static bool operator ==(Guid x, Guid y) => x.guid == y.guid;
+    public static bool operator ==(Guid x, Guid y) => x?.guid == y?.guid;
 
-    public static bool operator !=(Guid x, Guid y) => x.guid != y.guid;
+    public static bool operator !=(Guid x, Guid y) => x?.guid != y?.guid;
 }
 
 public static class BinaryReaderExtensions

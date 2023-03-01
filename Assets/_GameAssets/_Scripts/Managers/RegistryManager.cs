@@ -44,9 +44,8 @@ public class RegistryManager : MonoBase
             var entityHealth = saveEntityData.EntityHealths[i];
             
             var entityType = _entityRegistry.FindByGuid(entityGuid);
-            
-            var entity = Instantiate(entityType.EntityPrefab);
-            entity.InitSave(entityType, entityPosition, entityHealth);
+
+            var loadedEntity = EntityFactory.LoadEntity<Entity>(entityType, entityPosition, entityHealth);
         }
     }
 

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
-public class PoolModel<T> : MonoBase where T : Component
+public class EntityPoolModel<T> : MonoBase where T : Entity
 {
-    public static PoolModel<T> Instance;
+    public static EntityPoolModel<T> Instance;
 
     [SerializeField] private Transform _parent;
     [SerializeField] private T prefab;
@@ -21,7 +15,7 @@ public class PoolModel<T> : MonoBase where T : Component
         base.Initialize();
         Instance = this;
     }
-
+    
     public T GetItem(Transform parent = null)
     {
         if (items.Count <= 0)
