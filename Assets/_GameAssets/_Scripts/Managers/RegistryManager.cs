@@ -20,10 +20,10 @@ public class RegistryManager : MonoBase
     
     public void SaveGame()
     {
-        SaveEntityData saveEntityData = new SaveEntityData();
+        EntitySaveData entitySaveData = new EntitySaveData();
         var entities = FindObjectsOfType<Entity>();
-        saveEntityData.SetEntities(entities);
-        SaveHelper.SaveBinary($"{_saveFolderPath}/savedata01.dat", saveEntityData);
+        entitySaveData.SetEntities(entities);
+        SaveHelper.SaveBinary($"{_saveFolderPath}/savedata01.dat", entitySaveData);
     }
     
     public void LoadGame()
@@ -34,14 +34,14 @@ public class RegistryManager : MonoBase
             Destroy(entity.gameObject);
         }
 
-        SaveEntityData saveEntityData = new SaveEntityData();
-        SaveHelper.LoadBinary($"{_saveFolderPath}/savedata01.dat", saveEntityData);
+        EntitySaveData entitySaveData = new EntitySaveData();
+        SaveHelper.LoadBinary($"{_saveFolderPath}/savedata01.dat", entitySaveData);
 
-        for (int i = 0; i < saveEntityData.EntityGuids.Length; ++i)
+        for (int i = 0; i < entitySaveData.EntityGuids.Length; ++i)
         {
-            var entityGuid = saveEntityData.EntityGuids[i];
-            var entityPosition = saveEntityData.EntityPositions[i];
-            var entityHealth = saveEntityData.EntityHealths[i];
+            var entityGuid = entitySaveData.EntityGuids[i];
+            var entityPosition = entitySaveData.EntityPositions[i];
+            var entityHealth = entitySaveData.EntityHealths[i];
             
             var entityType = _entityRegistry.FindByGuid(entityGuid);
 

@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class UnitTypeUI : EntityTypeUI
 {
+    [Header("Unit Info")] 
     [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _damage;
     [SerializeField] private TextMeshProUGUI _attackSpeed;
-    
     
     public void SetData(UnitType productData)
     {

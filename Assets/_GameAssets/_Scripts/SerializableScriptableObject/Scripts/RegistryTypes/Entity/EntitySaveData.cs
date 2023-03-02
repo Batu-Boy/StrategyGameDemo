@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SaveEntityData
+public class EntitySaveData
 {
     public Guid[] EntityGuids;
     public Vector2Int[] EntityPositions;

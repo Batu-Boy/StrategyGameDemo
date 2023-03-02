@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Archer 3
   m_EditorClassIdentifier: 
   _guid:
-    rid: 3154426941954851800
+    rid: 5436690335787385104
   StartWidth: 1
   StartHeight: 1
   StartHealth: 5
-  Sprite: {fileID: 21300000, guid: cf5d5cb7446b24be39c6362761ff6a3a, type: 3}
+  Sprite: {fileID: -1996601943, guid: b4877b9e575284230a6340d499115655, type: 3}
   EntityPrefab: {fileID: 2393228360990086294, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
   Damage: 1
   Range: 2
@@ -25,7 +25,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3154426941954851800
+    - rid: 5436690335787385104
       type: {class: Guid, ns: , asm: Assembly-CSharp}
       data:
         guid: 920e4123d83e4459db87df78b56e8a9b

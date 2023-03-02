@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class Grid
 {
     public int Width { get; }
@@ -22,8 +21,31 @@ public class Grid
                 _gridArray[x, y] = cell;
             }
         }
+
+        ArrangeNeighbors();
     }
-    
+
+    //DOWN = 0, LEFT = 2, UP = 4, RIGHT = 6
+    private void ArrangeNeighbors()
+    {
+        for (var x = 0; x < Width; x++)
+        for (var y = 0; y < Height; y++)
+        {
+            //Don't need controls actually
+            var tempNeighbors = new Cell[8];
+            tempNeighbors[0] = GetCell(x, y - 1);
+            tempNeighbors[1] = GetCell(x - 1, y - 1);
+            tempNeighbors[2] = GetCell(x - 1, y);
+            tempNeighbors[3] = GetCell(x - 1, y + 1);
+            tempNeighbors[4] = GetCell(x, y + 1);
+            tempNeighbors[5] = GetCell(x + 1, y + 1);
+            tempNeighbors[6] = GetCell(x + 1, y);
+            tempNeighbors[7] = GetCell(x + 1, y - 1);
+            
+            GetCell(x, y).SetNeighbors(tempNeighbors);
+        }
+    }
+
     public Cell GetCell(int x, int y)
     {
         if (x >= Width || y >= Height || x < 0 || y < 0)
@@ -42,28 +64,6 @@ public class Grid
         }
         return _gridArray[pos.x, pos.y];
     }
-
-    /*public Element GetElementAt(int x, int y)
-    {
-        if (x >= Width || y >= Height || x < 0 || y < 0)
-        {
-            return null;
-        }
-        
-        return _gridArray[x, y].GetElement();
-    }
-    
-    public bool TryGetElementAt(int x, int y, out Element element)
-    {
-        if (x >= Width || y >= Height || x < 0 || y < 0)
-        {
-            element = null;
-            return false;
-        }
-
-        element = _gridArray[x, y].GetElement();
-        return true;
-    }*/
     
     public bool TryGetElementAs<T>(int x, int y, out T outElement) where T : Entity
     {

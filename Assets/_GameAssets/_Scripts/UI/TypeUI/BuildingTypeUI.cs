@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BuildingTypeUI : EntityTypeUI
 {
+    [Header("Building Info")]
     [SerializeField] private TextMeshProUGUI _dimensions;
 
     public void SetData(BuildingType buildingData)

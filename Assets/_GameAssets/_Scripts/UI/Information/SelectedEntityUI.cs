@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +8,7 @@ public class SelectedEntityUI : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _name;
     [SerializeField] private TextMeshProUGUI _health;
-    
+
     public void SetData(Entity entity)
     {
         _icon.sprite = entity.Type.Sprite;

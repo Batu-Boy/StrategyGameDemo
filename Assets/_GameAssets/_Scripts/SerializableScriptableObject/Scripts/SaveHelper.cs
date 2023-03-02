@@ -3,37 +3,37 @@ using UnityEngine;
 
 public class SaveHelper
 {
-    public static void SaveBinary(string filePath, SaveEntityData saveEntityData)
+    public static void SaveBinary(string filePath, EntitySaveData entitySaveData)
     {
         using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.OpenOrCreate)))
         {
-            writer.Write(saveEntityData.EntityGuids.Length);
-            for (int i = 0; i < saveEntityData.EntityGuids.Length; ++i)
+            writer.Write(entitySaveData.EntityGuids.Length);
+            for (int i = 0; i < entitySaveData.EntityGuids.Length; ++i)
             {
-                writer.WriteGuid(saveEntityData.EntityGuids[i]);
-                var position = saveEntityData.EntityPositions[i];
+                writer.WriteGuid(entitySaveData.EntityGuids[i]);
+                var position = entitySaveData.EntityPositions[i];
                 writer.Write(position.x);
                 writer.Write(position.y);
-                writer.Write(saveEntityData.EntityHealths[i]);
+                writer.Write(entitySaveData.EntityHealths[i]);
             }
         }
 
         Debug.Log($"Saved Binary to {filePath}");
     }
 
-    public static void LoadBinary(string filePath, SaveEntityData saveEntityData)
+    public static void LoadBinary(string filePath, EntitySaveData entitySaveData)
     {
         using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open)))
         {
             var entityCount = reader.ReadInt32();
-            saveEntityData.EntityGuids = new Guid[entityCount];
-            saveEntityData.EntityPositions = new Vector2Int[entityCount];
-            saveEntityData.EntityHealths = new int[entityCount];
+            entitySaveData.EntityGuids = new Guid[entityCount];
+            entitySaveData.EntityPositions = new Vector2Int[entityCount];
+            entitySaveData.EntityHealths = new int[entityCount];
             for (int i = 0; i < entityCount; ++i)
             {
-                saveEntityData.EntityGuids[i] = reader.ReadGuid();
-                saveEntityData.EntityPositions[i] = new Vector2Int(reader.ReadInt32(), reader.ReadInt32());
-                saveEntityData.EntityHealths[i] = reader.ReadInt32();
+                entitySaveData.EntityGuids[i] = reader.ReadGuid();
+                entitySaveData.EntityPositions[i] = new Vector2Int(reader.ReadInt32(), reader.ReadInt32());
+                entitySaveData.EntityHealths[i] = reader.ReadInt32();
             }
         }
 
