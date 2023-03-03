@@ -4,10 +4,11 @@ using UnityEngine.Serialization;
 
 public class Entity: MonoBehaviour
 {
-    [Header("Entity Settings")]
+    public EntityType Type;
+    
+    [Space]
     public int Health;
     public Vector2Int CurrentPosition;
-    [FormerlySerializedAs("type")] public EntityType Type;
     
     [Header("References")]
     [SerializeField] private Transform _graphic;
@@ -43,7 +44,7 @@ public class Entity: MonoBehaviour
         float localY = isHeightEven ? .5f : 0;
         
         _graphic.localPosition = new Vector3(localX, localY);
-        _graphic.localScale = new Vector3(width, height);
+        //_graphic.localScale = new Vector3(width, height);
         _spriteRenderer.sprite = Type.Sprite;
     }
     

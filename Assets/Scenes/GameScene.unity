@@ -594,9 +594,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473d25607214f0fb6c9c2f84c5988b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 17df2176041484f2b865bc5810f24654, type: 2}
   Health: 5
   CurrentPosition: {x: 7, y: 0}
-  Type: {fileID: 11400000, guid: 17df2176041484f2b865bc5810f24654, type: 2}
   _graphic: {fileID: 903946150}
   _spriteRenderer: {fileID: 1107218346}
   _collider: {fileID: 0}
@@ -907,9 +907,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473d25607214f0fb6c9c2f84c5988b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 15a20896f06a9474eb89ba43364550cf, type: 2}
   Health: 5
   CurrentPosition: {x: 6, y: 0}
-  Type: {fileID: 11400000, guid: 15a20896f06a9474eb89ba43364550cf, type: 2}
   _graphic: {fileID: 1118922611}
   _spriteRenderer: {fileID: 1971682797}
   _collider: {fileID: 0}
@@ -1986,9 +1986,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26de18c9545641f88230e8e1459460ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: c492f24eb884b4a03bfb4de0bd7e0a04, type: 2}
   Health: 50
   CurrentPosition: {x: 10, y: 1}
-  Type: {fileID: 11400000, guid: c492f24eb884b4a03bfb4de0bd7e0a04, type: 2}
   _graphic: {fileID: 662979884}
   _spriteRenderer: {fileID: 1855278616}
   _collider: {fileID: 0}
@@ -2182,8 +2182,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 332.79782}
-  m_SizeDelta: {x: 0, y: -665.596}
+  m_AnchoredPosition: {x: 0, y: 365.22}
+  m_SizeDelta: {x: 0, y: -730.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &662979883
 GameObject:
@@ -2693,9 +2693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473d25607214f0fb6c9c2f84c5988b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 406228cc84283450e841284de0a6909a, type: 2}
   Health: 10
   CurrentPosition: {x: 1, y: 0}
-  Type: {fileID: 11400000, guid: 406228cc84283450e841284de0a6909a, type: 2}
   _graphic: {fileID: 779017956}
   _spriteRenderer: {fileID: 2136448981}
   _collider: {fileID: 0}
@@ -4894,9 +4894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473d25607214f0fb6c9c2f84c5988b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 05fa5023fcd0c418a93ce760d97211d2, type: 2}
   Health: 10
   CurrentPosition: {x: 2, y: 0}
-  Type: {fileID: 11400000, guid: 05fa5023fcd0c418a93ce760d97211d2, type: 2}
   _graphic: {fileID: 1886457025}
   _spriteRenderer: {fileID: 706703084}
   _collider: {fileID: 0}
@@ -5080,9 +5080,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473d25607214f0fb6c9c2f84c5988b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 6db92e19c7d3547feae20379a89697a4, type: 2}
   Health: 10
   CurrentPosition: {x: 3, y: 0}
-  Type: {fileID: 11400000, guid: 6db92e19c7d3547feae20379a89697a4, type: 2}
   _graphic: {fileID: 2019849444}
   _spriteRenderer: {fileID: 854399788}
   _collider: {fileID: 0}
@@ -5800,9 +5800,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26de18c9545641f88230e8e1459460ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 8cc141e93da5048c89bca0f9858d72d4, type: 2}
   Health: 100
   CurrentPosition: {x: 1, y: 1}
-  Type: {fileID: 11400000, guid: 8cc141e93da5048c89bca0f9858d72d4, type: 2}
   _graphic: {fileID: 1930357794}
   _spriteRenderer: {fileID: 820280535}
   _collider: {fileID: 0}
@@ -6371,9 +6371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473d25607214f0fb6c9c2f84c5988b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 920e4123d83e4459db87df78b56e8a9b, type: 2}
   Health: 5
   CurrentPosition: {x: 8, y: 0}
-  Type: {fileID: 11400000, guid: 920e4123d83e4459db87df78b56e8a9b, type: 2}
   _graphic: {fileID: 232175968}
   _spriteRenderer: {fileID: 1240970113}
   _collider: {fileID: 0}
@@ -8536,9 +8536,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26de18c9545641f88230e8e1459460ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: {fileID: 11400000, guid: 08e34dd051d9145aa9ca5024769dae3d, type: 2}
   Health: 75
   CurrentPosition: {x: 6, y: 1}
-  Type: {fileID: 11400000, guid: 08e34dd051d9145aa9ca5024769dae3d, type: 2}
   _graphic: {fileID: 115752645}
   _spriteRenderer: {fileID: 1481790016}
   _collider: {fileID: 0}
@@ -8764,6 +8764,10 @@ PrefabInstance:
     - target: {fileID: 4348754300227977469, guid: 8f150ae9639f64cdab5ecbc11571583d, type: 3}
       propertyPath: m_Name
       value: SelectedEntityUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4348754300227977469, guid: 8f150ae9639f64cdab5ecbc11571583d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f150ae9639f64cdab5ecbc11571583d, type: 3}
