@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545975587275869251}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,17 +79,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e473d25607214f0fb6c9c2f84c5988b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 1
-  Height: 1
   Health: 0
   CurrentPosition: {x: 0, y: 0}
   Type: {fileID: 0}
   _graphic: {fileID: 8323811569400159579}
   _spriteRenderer: {fileID: 4322683342042949076}
   _collider: {fileID: 3529702611089604509}
-  Damage: 1
-  Range: 1
-  AttackSpeed: 0
 --- !u!50 &7095404380921828295
 Rigidbody2D:
   serializedVersion: 4

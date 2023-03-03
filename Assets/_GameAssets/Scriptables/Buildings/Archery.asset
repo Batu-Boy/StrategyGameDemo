@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Archery
   m_EditorClassIdentifier: 
   _guid:
-    rid: 3154426941954851792
+    rid: 5436690359809736859
   StartWidth: 3
   StartHeight: 3
   StartHealth: 75
-  Sprite: {fileID: 21300000, guid: aba7d59972f5547d7810693415dde482, type: 3}
+  Sprite: {fileID: -1432045819, guid: 84cda3e382d8c44fab1d12c04898ee63, type: 3}
   EntityPrefab: {fileID: 2430926526737883873, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
   Productions:
   - {fileID: 11400000, guid: 15a20896f06a9474eb89ba43364550cf, type: 2}
@@ -26,7 +26,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 3154426941954851792
+    - rid: 5436690359809736859
       type: {class: Guid, ns: , asm: Assembly-CSharp}
       data:
         guid: 08e34dd051d9145aa9ca5024769dae3d

@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Power Plant
   m_EditorClassIdentifier: 
   _guid:
-    rid: 3154426941954851793
+    rid: 5436690359075995668
   StartWidth: 2
   StartHeight: 3
   StartHealth: 50
-  Sprite: {fileID: 21300000, guid: d6ef31fb299e34b749cc87c2ed42c5d8, type: 3}
+  Sprite: {fileID: -1908284016, guid: 84cda3e382d8c44fab1d12c04898ee63, type: 3}
   EntityPrefab: {fileID: 2430926526737883873, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
   Productions: []
   references:
     version: 2
     RefIds:
-    - rid: 3154426941954851793
+    - rid: 5436690359075995668
       type: {class: Guid, ns: , asm: Assembly-CSharp}
       data:
         guid: c492f24eb884b4a03bfb4de0bd7e0a04

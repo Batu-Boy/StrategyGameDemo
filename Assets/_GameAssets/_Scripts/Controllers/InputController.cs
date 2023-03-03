@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class InputController : ControllerBase
 {
+    [SerializeField] private Transform _transform;
     [SerializeField] private Camera mainCam;
     
     public override void Initialize()
@@ -12,13 +13,16 @@ public class InputController : ControllerBase
     
     public override void ControllerUpdate(GameStates currentState)
     {
-        if (currentState != GameStates.Game) return;
-
-        if (!Input.GetMouseButtonDown(0)) return;
+        //if (currentState != GameStates.Game) return;
+        
+        //if (!Input.GetMouseButtonDown(0)) return;
         
         var mousePos = Input.mousePosition;
         mousePos.z = 0;
         var mouseWorldPos = mainCam.ScreenToWorldPoint(mousePos);
-        Vector2Int floorInput = new Vector2Int(Mathf.FloorToInt(mouseWorldPos.x), Mathf.FloorToInt(mouseWorldPos.y));
+        Vector3 roundInput = new Vector3(Mathf.RoundToInt(mouseWorldPos.x), Mathf.RoundToInt(mouseWorldPos.y));
+
+        if(_transform)
+            _transform.position = roundInput;
     }
 }

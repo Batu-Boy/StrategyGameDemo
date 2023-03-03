@@ -15,6 +15,7 @@ public class InformationViewModel : ScreenElement
         base.Initialize();
         ClearInfo();
         EventManager.OnMapEntitySelected.AddListener(ShowInfo);
+        _selectedEntityUI.SetActiveGameObject(false);
     }
     
     [EditorButton]
@@ -25,7 +26,8 @@ public class InformationViewModel : ScreenElement
         ClearInfo();
         _currentShowingEntity = entity;
         _selectedEntityUI.SetData(entity);
-        
+        _selectedEntityUI.SetActiveGameObject(true);
+
         if (entity.Type is not BuildingType buildingType) return;
         if(buildingType.Productions == null || buildingType.Productions.Count < 0 ) return;
         
@@ -50,5 +52,6 @@ public class InformationViewModel : ScreenElement
         }
 
         _currentShowingEntity = null;
+        _selectedEntityUI.SetActiveGameObject(false);
     }
 }

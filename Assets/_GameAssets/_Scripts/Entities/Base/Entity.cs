@@ -1,7 +1,8 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public abstract class Entity: MonoBehaviour
+public class Entity: MonoBehaviour
 {
     [Header("Entity Settings")]
     public int Health;
@@ -12,8 +13,8 @@ public abstract class Entity: MonoBehaviour
     [SerializeField] private Transform _graphic;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private BoxCollider2D _collider;
-
-    public virtual void InitType(EntityType type,Vector2Int position)
+    
+    public void InitType(EntityType type,Vector2Int position)
     {
         Type = type;
         Health = Type.StartHealth;
@@ -25,7 +26,7 @@ public abstract class Entity: MonoBehaviour
         ArrangeGraphic(Type.StartWidth,Type.StartHeight);
         ArrangeCollider(Type.StartWidth,Type.StartHeight);
     }
-
+    
     public void InitSave(EntityType type, Vector2Int position, int health)
     {
         InitType(type, position);
@@ -35,10 +36,17 @@ public abstract class Entity: MonoBehaviour
     
     private void ArrangeGraphic(int width, int height)
     {
-        _graphic.localPosition = new Vector3(width / 2f, height / 2f);
+        bool isWidthEven = width % 2 == 0;
+        bool isHeightEven = height % 2 == 0;
+
+        float localX = isWidthEven ? .5f : 0;
+        float localY = isHeightEven ? .5f : 0;
+        
+        _graphic.localPosition = new Vector3(localX, localY);
+        _graphic.localScale = new Vector3(width, height);
         _spriteRenderer.sprite = Type.Sprite;
     }
-
+    
     private void ArrangeCollider(int width, int height)
     {
         _collider.size = new Vector2(width, height);

@@ -17,10 +17,10 @@ public class SaveHelper
                 writer.Write(entitySaveData.EntityHealths[i]);
             }
         }
-
+        
         Debug.Log($"Saved Binary to {filePath}");
     }
-
+    
     public static void LoadBinary(string filePath, EntitySaveData entitySaveData)
     {
         using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open)))
