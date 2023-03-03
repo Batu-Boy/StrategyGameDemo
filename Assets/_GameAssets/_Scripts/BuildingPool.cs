@@ -1,4 +1,4 @@
-public class BuildingPool : EntityPoolModel<Building>
+public class BuildingPool : EntityPoolModel
 {
     
 }

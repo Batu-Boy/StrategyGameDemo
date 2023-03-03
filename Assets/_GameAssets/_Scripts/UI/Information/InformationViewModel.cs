@@ -26,10 +26,10 @@ public class InformationViewModel : ScreenElement
         _currentShowingEntity = entity;
         _selectedEntityUI.SetData(entity);
         
-        if (entity is not Building building) return;
-        if(building.Productions == null || building.Productions.Count < 0 ) return;
+        if (entity.Type is not BuildingType buildingType) return;
+        if(buildingType.Productions == null || buildingType.Productions.Count < 0 ) return;
         
-        ListProductions(building.Productions);
+        ListProductions(buildingType.Productions);
     }
     
     private void ListProductions(List<EntityType> buildingProductions)

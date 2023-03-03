@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class EntityPoolModel<T> : MonoBase where T : Entity
+public class EntityPoolModel : MonoBase
 {
-    public static EntityPoolModel<T> Instance;
+    public static EntityPoolModel Instance;
 
     [SerializeField] private Transform _parent;
-    [SerializeField] private T prefab;
+    [SerializeField] private Entity prefab;
     [SerializeField] private int capacity = 100;
-    [SerializeField] List<T> items;
+    [SerializeField] List<Entity> items;
     
     public override void Initialize()
     {
@@ -16,21 +17,25 @@ public class EntityPoolModel<T> : MonoBase where T : Entity
         Instance = this;
     }
     
-    public T GetItem(Transform parent = null)
+    public T GetItem<T>(Transform parent = null) where T: Entity
     {
         if (items.Count <= 0)
         {
-            return Instantiate(prefab, parent);
+            return Instantiate(prefab as T, parent);
         }
 
-        var item = items[0];
+        var item = items.FirstOrDefault(x => x.GetType() == typeof(T));
+        if (!item)
+        {
+            return Instantiate(prefab as T, parent);
+        }
         item.SetActiveGameObject(true);
         items.Remove(item);
         item.transform.SetParent(parent != null ? parent : _parent);
-        return item;
+        return item as T;
     }
 
-    public void ReturnItem(T item)
+    public void ReturnItem<T>(T item) where T : Entity
     {
         if (items.Count < capacity)
         {

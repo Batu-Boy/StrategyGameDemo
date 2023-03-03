@@ -14,7 +14,7 @@ public class Building : Entity
             Debug.LogError($"Type Casting Error! [{name}]");
             return;
         }
-
+        
         Productions = buildingType.Productions;
     }
 }

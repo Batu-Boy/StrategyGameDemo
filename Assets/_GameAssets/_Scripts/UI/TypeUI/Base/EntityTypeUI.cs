@@ -19,7 +19,7 @@ public abstract class EntityTypeUI : MonoBehaviour
         _icon.sprite = entityData.Sprite;
         _name.text = entityData.name;
     }
-
+    
     private void OnMouseUpAsButton()
     {
         EventManager.OnEntityUISelected?.Invoke(entityType);
