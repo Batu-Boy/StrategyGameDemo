@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EntityType: SerializableScriptableObject
 {
@@ -7,6 +8,5 @@ public class EntityType: SerializableScriptableObject
     [Range(1,5)] public int StartHeight;
     [Range(1,100)] public int StartHealth;
     public Sprite Sprite;
-    public Entity EntityPrefab;
+    //[FormerlySerializedAs("EntityPrefab")] public EntityVisual entityPrefab;
 }
-

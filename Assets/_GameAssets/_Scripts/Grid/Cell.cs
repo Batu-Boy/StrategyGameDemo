@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class Cell
 {
-    [field: SerializeReference] public Entity Element { get; set; }
+    [field: SerializeReference] public Entity Entity { get; set; }
     
     public Vector2Int Position => new Vector2Int(_x, _y);
     public Cell[] Neighbors => _neighbors;
-    public bool IsEmpty => Element == null;
+    public bool IsEmpty => Entity == null;
     
     private readonly int _x;
     private readonly int _y;
@@ -19,14 +19,14 @@ public class Cell
     {
         _x = x;
         _y = y;
-        Element = null;
+        Entity = null;
     }
 
-    public Cell(int x, int y, Entity element)
+    public Cell(int x, int y, Entity entity)
     {
         _x = x;
         _y = y;
-        Element = element;
+        Entity = entity;
     }
     
     //DOWN = 0, LEFT = 2, UP = 4, RIGHT = 6
@@ -35,15 +35,15 @@ public class Cell
         _neighbors = neighbors;
     }
     
-    public void ClearCell() => Element = null;
+    public void ClearCell() => Entity = null;
     
-    public bool TryGetElementAs<T>(out T outElement) where T : Entity
+    public bool TryGetEntityAs<T>(out T outEntity) where T : Entity
     {
-        var element = Element;
-        outElement = element as T;
-        if (element == null) return false;
+        var entity = Entity;
+        outEntity = entity as T;
+        if (entity == null) return false;
         
-        return element.GetType() == typeof(T);
+        return entity.GetType() == typeof(T);
     }
     
 }

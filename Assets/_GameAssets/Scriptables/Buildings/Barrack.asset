@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: Barrack
   m_EditorClassIdentifier: 
   _guid:
-    rid: 5436690363321155684
+    rid: 5436690377325150856
   StartWidth: 4
   StartHeight: 4
   StartHealth: 100
-  Sprite: {fileID: 21300000, guid: eb61b67baa9324a3a8158d7ef7587572, type: 3}
-  EntityPrefab: {fileID: 2430926526737883873, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
+  Sprite: {fileID: 21300000, guid: 7a3cb27dd201f4086900e59b4e11370f, type: 3}
   Productions:
   - {fileID: 11400000, guid: 406228cc84283450e841284de0a6909a, type: 2}
   - {fileID: 11400000, guid: 05fa5023fcd0c418a93ce760d97211d2, type: 2}
@@ -26,7 +25,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 5436690363321155684
+    - rid: 5436690377325150856
       type: {class: Guid, ns: , asm: Assembly-CSharp}
       data:
         guid: 8cc141e93da5048c89bca0f9858d72d4

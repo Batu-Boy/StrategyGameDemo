@@ -3,8 +3,14 @@ public enum GameStates
     Main,
     Game,
     End,
-    WaitInput,
     Loading
+}
+
+public enum InputStates
+{
+    Idle,
+    BuildingPlacement,
+    EntitySelect
 }
 
 public enum VibrationTypes

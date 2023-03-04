@@ -1,18 +1,21 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //dont want to create an object
-public abstract class EntityTypeUI : MonoBehaviour
+public abstract class EntityTypeUI<T> : MonoBehaviour, IPointerClickHandler
+    where T : EntityType
 {
+    [Space]
+    [SerializeReference] public T entityType;
+    
     [Header("EntityInfo")]
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _name;
     
-    [Space]
-    [SerializeReference] public EntityType entityType;
-    
-    public void SetData(EntityType entityData)
+    public virtual void SetData(T entityData)
     {
         entityType = entityData;
         
@@ -20,8 +23,10 @@ public abstract class EntityTypeUI : MonoBehaviour
         _name.text = entityData.name;
     }
     
-    private void OnMouseUpAsButton()
+    protected abstract void OnClick();
+    
+    public void OnPointerClick(PointerEventData eventData)
     {
-        EventManager.OnEntityUISelected?.Invoke(entityType);
+        OnClick();
     }
 }

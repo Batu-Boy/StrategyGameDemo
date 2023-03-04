@@ -189,9 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881d02fa4fc44e0691004bd8be9fa3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityType: {fileID: 0}
   _icon: {fileID: 3289050649527770696}
   _name: {fileID: 3289050649118647158}
-  entityType: {fileID: 0}
   _health: {fileID: 3289050648617037720}
   _damage: {fileID: 3289050649340119417}
   _attackSpeed: {fileID: 3289050649619870607}
@@ -569,9 +569,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 26e07676b886b4b76a810811737e8c2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e8c93fecd1c87453caec5d51a4e60f64, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

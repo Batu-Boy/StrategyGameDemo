@@ -31,11 +31,7 @@ public class GameController : ControllerBase
     //Tap To Play Event Trigger
     public void StartGame()
     {
-        _currentState = (GameStates)1;
-        onGameStateChanged?.Invoke(_currentState);
-        OnStateChanged(_currentState);
-
-        _currentState = GameStates.WaitInput;
+        _currentState = GameStates.Game;
         onGameStateChanged?.Invoke(_currentState);
         OnStateChanged(_currentState);
     }

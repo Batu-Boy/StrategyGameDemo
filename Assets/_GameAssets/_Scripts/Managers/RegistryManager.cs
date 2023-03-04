@@ -31,7 +31,14 @@ public class RegistryManager : MonoBase
         var entities = FindObjectsOfType<Entity>();
         foreach (var entity in entities)
         {
-            Destroy(entity.gameObject);
+            if (entity is Building building)
+            {
+                EntityDestroyer.Destroy<Building>(building);
+            }
+            else if (entity is Unit unit)
+            {
+               EntityDestroyer.Destroy<Unit>(unit);
+            }
         }
 
         EntitySaveData entitySaveData = new EntitySaveData();
@@ -44,8 +51,15 @@ public class RegistryManager : MonoBase
             var entityHealth = entitySaveData.EntityHealths[i];
             
             var entityType = _entityRegistry.FindByGuid(entityGuid);
-
-            var loadedEntity = EntityFactory.LoadEntity<Entity>(entityType, entityPosition, entityHealth);
+            
+            if (entityType is BuildingType building)
+            {
+                EntityFactory.LoadEntity<Building>(entityType, entityPosition, entityHealth);
+            }
+            else if (entityType is UnitType unit)
+            {
+                EntityFactory.LoadEntity<Unit>(entityType, entityPosition, entityHealth);
+            }
         }
     }
 

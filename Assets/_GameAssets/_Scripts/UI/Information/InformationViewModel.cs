@@ -8,26 +8,24 @@ public class InformationViewModel : ScreenElement
     [SerializeField] private List<UnitTypeUI> _unitTypeUIs;
     
     [Header("Debug")]
-    [SerializeField] private Entity _currentShowingEntity;
+    [SerializeField] private Entity currentShowingEntity;
     
     public override void Initialize()
     {
         base.Initialize();
         ClearInfo();
         EventManager.OnMapEntitySelected.AddListener(ShowInfo);
-        _selectedEntityUI.SetActiveGameObject(false);
     }
     
-    [EditorButton]
     public void ShowInfo(Entity entity)
     {
-        if(_currentShowingEntity == entity) return;
+        if(currentShowingEntity == entity) return;
         
         ClearInfo();
-        _currentShowingEntity = entity;
+        currentShowingEntity = entity;
         _selectedEntityUI.SetData(entity);
         _selectedEntityUI.SetActiveGameObject(true);
-
+        
         if (entity.Type is not BuildingType buildingType) return;
         if(buildingType.Productions == null || buildingType.Productions.Count < 0 ) return;
         
@@ -50,8 +48,16 @@ public class InformationViewModel : ScreenElement
         {
             unitTypeUI.SetActiveGameObject(false);
         }
-
-        _currentShowingEntity = null;
+        
+        currentShowingEntity = null;
         _selectedEntityUI.SetActiveGameObject(false);
+    }
+
+    public void ProduceOrder(UnitType entityType)
+    {
+        if (currentShowingEntity is Building building)
+        {
+            building.ProduceUnit(entityType);
+        }
     }
 }

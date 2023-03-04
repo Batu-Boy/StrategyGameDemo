@@ -12,7 +12,7 @@ public class LevelController : MonoBase
     public int forceLevelIndex = -1;
 #endif
     [SerializeField] private Object jsonLevels;
-    [SerializeField] private GridInitializer _gridInitializer;
+    [FormerlySerializedAs("gridController")] [FormerlySerializedAs("_gridInitializer")] [SerializeField] private GridManager gridManager;
     [SerializeField] private UnityEvent<LevelModel> onLevelLoaded;
     [SerializeField] private LevelList levelModels;
     [SerializeField] private LevelModel EditorLevel;
@@ -25,13 +25,13 @@ public class LevelController : MonoBase
     private void Awake()
     {
         if (!initializeOnAwake) return;
-        Init();
+        //Init();
     }
 
     public override void Initialize()
     {
         if (initializeOnAwake) return;
-        Init();
+        //Init();
     }
 
     private void Init()
@@ -80,14 +80,13 @@ public class LevelController : MonoBase
 #if UNITY_EDITOR
         EditorLevel = activeLevel;
 #endif
-        _gridInitializer.InitializeGrid(activeLevel);
         onLevelLoaded?.Invoke(activeLevel);
     }
 
     #endregion
     public void ClearScene()
     {
-        _gridInitializer.ClearScene();
+        gridManager.ClearGrid();
         EditorLevel = null;
         activeLevel = null;
     }
