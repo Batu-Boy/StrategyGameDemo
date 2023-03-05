@@ -1,11 +1,11 @@
 using UnityEngine;
-public class Grid
+public class CellGrid
 {
     private readonly int _width;
     private readonly int _height;
     private readonly Cell[,] _gridArray;
 
-    public Grid(int width, int height)
+    public CellGrid(int width, int height)
     {
         _width = width;
         _height = height;
@@ -20,30 +20,9 @@ public class Grid
                 _gridArray[x, y] = cell;
             }
         }
-
-        ArrangeNeighbors();
     }
 
-    //DOWN = 0, LEFT = 2, UP = 4, RIGHT = 6
-    private void ArrangeNeighbors()
-    {
-        for (var x = 0; x < _width; x++)
-        for (var y = 0; y < _height; y++)
-        {
-            //Don't need controls actually
-            var tempNeighbors = new Cell[8];
-            tempNeighbors[0] = GetCell(x, y - 1);
-            tempNeighbors[1] = GetCell(x - 1, y - 1);
-            tempNeighbors[2] = GetCell(x - 1, y);
-            tempNeighbors[3] = GetCell(x - 1, y + 1);
-            tempNeighbors[4] = GetCell(x, y + 1);
-            tempNeighbors[5] = GetCell(x + 1, y + 1);
-            tempNeighbors[6] = GetCell(x + 1, y);
-            tempNeighbors[7] = GetCell(x + 1, y - 1);
-            
-            GetCell(x, y).SetNeighbors(tempNeighbors);
-        }
-    }
+
 
     private Cell GetCell(int x, int y)
     {

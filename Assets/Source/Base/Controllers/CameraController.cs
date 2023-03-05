@@ -4,7 +4,7 @@ using Cinemachine;
 //TODO: implement camera controls
 public class CameraController : ControllerBase
 {
-    public void SetPositionByGrid(Grid grid)
+    public void SetPositionByGrid(CellGrid cellGrid)
     {
         //Camera.main.transform.position =
             //new Vector3(grid.Width / 2f, grid.Height / 2f, Camera.main.transform.position.z);

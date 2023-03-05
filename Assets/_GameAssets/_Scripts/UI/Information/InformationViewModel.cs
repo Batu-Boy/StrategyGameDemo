@@ -52,12 +52,4 @@ public class InformationViewModel : ScreenElement
         currentShowingEntity = null;
         _selectedEntityUI.SetActiveGameObject(false);
     }
-
-    public void ProduceOrder(UnitType entityType)
-    {
-        if (currentShowingEntity is Building building)
-        {
-            building.ProduceUnit(entityType);
-        }
-    }
 }

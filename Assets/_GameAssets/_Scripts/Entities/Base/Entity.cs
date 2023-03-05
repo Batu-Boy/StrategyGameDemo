@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(EntityVisual))]
-public class Entity: MonoBehaviour
+public class Entity: MonoBehaviour, IPointerClickHandler
 {
     [Header("References")] 
     [SerializeField] private EntityVisual _entityVisual;
@@ -37,8 +38,8 @@ public class Entity: MonoBehaviour
     {
         CurrentPosition = position;
     }
-    
-    private void OnMouseUpAsButton()
+
+    public void OnPointerClick(PointerEventData eventData)
     {
         EventManager.OnMapEntitySelected?.Invoke(this);
     }

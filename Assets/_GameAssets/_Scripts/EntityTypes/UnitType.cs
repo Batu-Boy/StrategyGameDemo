@@ -7,4 +7,5 @@ public class UnitType : EntityType
     [Range(1,10)] public int Damage;
     [Range(1,3)] public int Range;
     [Range(0,3)] public float AttackSpeed;
+    [Range(1,3)] public float MoveSpeed;
 }

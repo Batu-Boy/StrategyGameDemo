@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(UnitProducer))]
-public class Building : Entity
+public class Building : Entity , IUnitProducer
 {
     [Header("Type Specific")]
     [SerializeField] private UnitProducer _producer;
@@ -13,7 +13,7 @@ public class Building : Entity
         _producer.CalculateSpawnPoint(type.StartHeight, position);
     }
     
-    public void ProduceUnit(UnitType unitType)
+    public void Produce(UnitType unitType)
     {
         _producer.ProduceUnit(unitType);
     }

@@ -7,9 +7,6 @@ public class UnitTypeUI : EntityTypeUI<UnitType>
     [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _damage;
     [SerializeField] private TextMeshProUGUI _attackSpeed;
-
-    [Header("References")]
-    [SerializeField] private InformationViewModel _informationViewModel;
     
     public override void SetData(UnitType productData)
     {
@@ -21,6 +18,6 @@ public class UnitTypeUI : EntityTypeUI<UnitType>
 
     protected override void OnClick()
     {
-        _informationViewModel.ProduceOrder(entityType);
+        EventManager.OnUnitUISelected?.Invoke(entityType);
     }
 }

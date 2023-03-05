@@ -7,26 +7,36 @@ public class GridManager : MonoBase
 {
     [SerializeField] private int Width;
     [SerializeField] private int Height;
+
+    [SerializeField] private Collider boundingBox;
+
+    public static PathFinder PathFinder;
     
-    private static Grid _grid;
+    private static CellGrid _cellGrid;
+    private static PathGrid _pathGrid;
 
     public override void Initialize()
     {
         base.Initialize();
-        InitGrid(Width,Height);
+        InitCellGrid();
+        InitPathGrid();
+        EventManager.OnGridInitialized?.Invoke(_cellGrid);
     }
 
-    private void InitGrid(int width, int height)
+    private void InitPathGrid()
     {
-        Width = width;
-        Height = height;
-        _grid = new Grid(Width, Height);
-        EventManager.OnGridInitialized?.Invoke(_grid);
+        _pathGrid = new PathGrid(Width, Height);
+        PathFinder = new PathFinder(ref _pathGrid);
+    }
+
+    private void InitCellGrid()
+    {
+        _cellGrid = new CellGrid(Width, Height);
     }
     
     public void ClearGrid()
     {
-        _grid = null;
+        _cellGrid = null;
         EventManager.OnClear?.Invoke();
     }
     
@@ -34,9 +44,10 @@ public class GridManager : MonoBase
     {
         foreach (var settlementPosition in GetSettlementPositions(entity.Type, entity.CurrentPosition))
         {
-            if (!_grid.TryGetCell(settlementPosition, out Cell cell)) continue;
+            if (!_cellGrid.TryGetCell(settlementPosition, out Cell cell)) continue;
             
             cell.Entity = null;
+            _pathGrid.GetNode(settlementPosition).IsEmpty = true;
         }
     }
     
@@ -44,9 +55,10 @@ public class GridManager : MonoBase
     {
         foreach (var settlementPosition in GetSettlementPositions(entity.Type, centerPosition))
         {
-            if (!_grid.TryGetCell(settlementPosition, out Cell cell)) continue;
+            if (!_cellGrid.TryGetCell(settlementPosition, out Cell cell)) continue;
             
             cell.Entity = entity;
+            _pathGrid.GetNode(settlementPosition).IsEmpty = false;
         }
     }
     
@@ -63,12 +75,19 @@ public class GridManager : MonoBase
     
     private static bool IsPositionsValid(IEnumerable<Vector2Int> positions)
     {
-        return positions.All(IsPositionValid);
+        //not going for linq because of performance
+        foreach (var position in positions)
+        {
+            if (!IsPositionValid(position))
+                return false;
+        }
+
+        return true;
     }
     
-    private static bool IsPositionValid(Vector2Int position)
+    public static bool IsPositionValid(Vector2Int position)
     {
-        return _grid.GetCell(position) != null && _grid.GetCell(position).IsEmpty;
+        return _cellGrid.GetCell(position) != null && _cellGrid.GetCell(position).IsEmpty;
     }
     
     private static IEnumerable<Vector2Int> GetSettlementPositions(EntityType type, Vector2Int centerPosition)

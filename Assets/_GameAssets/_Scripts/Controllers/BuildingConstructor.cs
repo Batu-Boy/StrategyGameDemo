@@ -15,12 +15,7 @@ public class BuildingConstructor : MonoBase
     {
         base.Initialize();
         ResetValues();
-        EventManager.OnBuildingUISelected.AddListener(OnBuildingUISelected);
-    }
-    
-    private void OnBuildingUISelected(BuildingType selectedType)
-    {
-        ArrangeSilhouette(selectedType);
+        EventManager.OnBuildingUISelected.AddListener(ArrangeSilhouette);
     }
     
     private void ArrangeSilhouette(BuildingType selectedType)
@@ -64,14 +59,14 @@ public class BuildingConstructor : MonoBase
         if (mouseMapPos != _currentPosition)
         {
             UpdatePosition(mouseMapPos);
-            CheckPositionValid(mouseMapPos);
+            CheckPositionValid(mouseMapPos.ToGridPos());
         }
     }
     
-    private void CheckPositionValid(Vector3Int mouseMapPos)
+    private void CheckPositionValid(Vector2Int mouseGridPos)
     {
         _isValidPosition =
-            GridManager.IsSettlementValid(_currentSelectedType, new Vector2Int(mouseMapPos.x, mouseMapPos.y));
+            GridManager.IsSettlementValid(_currentSelectedType,  mouseGridPos);
         var color = _isValidPosition ? Color.white : Color.red;
         color.a = .6f;
         _silhouetteRenderer.color = color;

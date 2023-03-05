@@ -111,7 +111,7 @@ MonoBehaviour:
   Type: {fileID: 0}
   Health: 0
   CurrentPosition: {x: 0, y: 0}
-  Movement: {fileID: 0}
+  _movement: {fileID: 2041415780252130415}
 --- !u!114 &2041415780252130415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d076e7631c584f12aa2a6f48f312d6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 0
 --- !u!114 &7968751453550382815
 MonoBehaviour:
   m_ObjectHideFlags: 0
