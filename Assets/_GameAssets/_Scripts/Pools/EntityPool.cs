@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class EntityPool<T> : MonoBase where T : Entity
+public abstract class EntityPool<T> : MonoBase where T : Entity
 {
     public static EntityPool<T> Instance;
     

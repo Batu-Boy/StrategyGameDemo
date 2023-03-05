@@ -15,6 +15,7 @@ public class SaveHelper
                 writer.Write(position.x);
                 writer.Write(position.y);
                 writer.Write(entitySaveData.EntityHealths[i]);
+                writer.Write((int)entitySaveData.EntityTeams[i]);
             }
         }
         
@@ -29,11 +30,13 @@ public class SaveHelper
             entitySaveData.EntityGuids = new Guid[entityCount];
             entitySaveData.EntityPositions = new Vector2Int[entityCount];
             entitySaveData.EntityHealths = new int[entityCount];
+            entitySaveData.EntityTeams = new Team[entityCount];
             for (int i = 0; i < entityCount; ++i)
             {
                 entitySaveData.EntityGuids[i] = reader.ReadGuid();
                 entitySaveData.EntityPositions[i] = new Vector2Int(reader.ReadInt32(), reader.ReadInt32());
                 entitySaveData.EntityHealths[i] = reader.ReadInt32();
+                entitySaveData.EntityTeams[i] = (Team)reader.ReadInt32();
             }
         }
 

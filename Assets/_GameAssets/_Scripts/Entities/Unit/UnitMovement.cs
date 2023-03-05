@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
@@ -9,16 +7,14 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] private float _moveSpeed;
 
     private Unit _unit;
-    [SerializeReference] private Path _currentPath;
+    private Path _currentPath;
     
-    private WaitForSeconds _speedWait;
     private Coroutine _movementCoroutine;
     
     public void SetMovementSpeed(Unit unit)
     {
         _unit = unit;
-        _moveSpeed = 1;
-        _speedWait = new WaitForSeconds(_moveSpeed);
+        _moveSpeed = 3;
     }
     
     public void Move(Path path)
@@ -33,14 +29,15 @@ public class UnitMovement : MonoBehaviour
         while (_currentPath.wayPoints.Count != 0)
         {
             var nextTargetPoint = _currentPath.GetNextPoint();
-            transform.DOMove(nextTargetPoint, _moveSpeed).SetEase(Ease.Linear).SetId(this);
-            yield return _speedWait;
+            float distance = Vector3.Distance(nextTargetPoint, transform.position);
+            float duration = distance / _moveSpeed;
+            transform.DOMove(nextTargetPoint, duration).SetEase(Ease.Linear).SetId(this);
+            yield return new WaitForSeconds(duration);
             _unit.CurrentPosition = nextTargetPoint.ToGridPos();
         }
         
         if (_currentPath.IsComplete)
         {
-            Debug.Log($"Path Complete on:{name}");
             _currentPath = null;
         }
     }

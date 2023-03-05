@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //dont want to create an object
-public abstract class EntityTypeUI<T> : MonoBehaviour, IPointerClickHandler
+public abstract class EntityTypeUI<T> : MonoBehaviour
     where T : EntityType
 {
     [Space]
@@ -14,7 +14,19 @@ public abstract class EntityTypeUI<T> : MonoBehaviour, IPointerClickHandler
     [Header("EntityInfo")]
     [SerializeField] private Image _icon;
     [SerializeField] private TextMeshProUGUI _name;
-    
+
+    [SerializeField] private Button _button;
+
+    private void OnEnable()
+    {
+        _button.onClick.AddListener(OnClick);
+    }
+
+    private void OnDisable()
+    {
+        _button.onClick.RemoveListener(OnClick);
+    }
+
     public virtual void SetData(T entityData)
     {
         entityType = entityData;
@@ -24,9 +36,4 @@ public abstract class EntityTypeUI<T> : MonoBehaviour, IPointerClickHandler
     }
     
     protected abstract void OnClick();
-    
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        OnClick();
-    }
 }

@@ -13,6 +13,13 @@ public enum InputStates
     EntitySelect
 }
 
+public enum Team
+{
+    Green,
+    Red,
+    Blue
+}
+
 public enum VibrationTypes
 {
     None,

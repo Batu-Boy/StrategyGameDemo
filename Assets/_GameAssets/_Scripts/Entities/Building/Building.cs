@@ -7,9 +7,9 @@ public class Building : Entity , IUnitProducer
     [Header("Type Specific")]
     [SerializeField] private UnitProducer _producer;
     
-    public override void InitType(EntityType type, Vector2Int position)
+    public override void InitType(EntityType type, Vector2Int position, Team team)
     {
-        base.InitType(type, position);
+        base.InitType(type, position, team);
         _producer.CalculateSpawnPoint(type.StartHeight, position);
     }
     

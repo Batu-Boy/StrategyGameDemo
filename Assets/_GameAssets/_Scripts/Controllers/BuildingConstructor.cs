@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 //TODO: seperate visual
 public class BuildingConstructor : MonoBase
@@ -39,6 +40,8 @@ public class BuildingConstructor : MonoBase
         
         if (Input.GetMouseButtonDown(0))
         {
+            if(EventSystem.current.IsPointerOverGameObject()) return;
+            
             if(_isValidPosition)
                 ConstructBuilding();
             else
@@ -48,8 +51,8 @@ public class BuildingConstructor : MonoBase
     
     private void ConstructBuilding()
     {
-        var newBuilding = EntityFactory.CreateEntity<Building>(_currentSelectedType, _currentPosition);
-        
+        var newBuilding = EntityFactory<Building>.CreateEntity(_currentSelectedType, _currentPosition);
+        EventManager.OnMapEntitySelected?.Invoke(newBuilding);
         ResetValues();
     }
     

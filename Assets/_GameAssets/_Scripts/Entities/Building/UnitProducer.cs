@@ -6,7 +6,7 @@ public class UnitProducer : MonoBehaviour
 
     public void ProduceUnit(UnitType unitType)
     {
-        var unit = EntityFactory.CreateEntity<Unit>(unitType, _spawnPoint);
+        EntityFactory<Unit>.CreateEntity(unitType, _spawnPoint);
     }
     
     public void CalculateSpawnPoint(int height, Vector2Int position)

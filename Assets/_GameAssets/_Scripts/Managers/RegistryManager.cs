@@ -5,15 +5,15 @@ using UnityEngine;
 public class RegistryManager : MonoBase
 {
     [SerializeField] EntityRegistry _entityRegistry;
-
+    
     static string _saveFolderPath;
-
+    
     public override void Initialize()
     {
         base.Initialize();
         
         _saveFolderPath = $"{Application.persistentDataPath}/Saves";
-
+        
         if (!Directory.Exists(_saveFolderPath))
             Directory.CreateDirectory(_saveFolderPath);
     }
@@ -36,8 +36,8 @@ public class RegistryManager : MonoBase
                 EntityDestroyer.Destroy<Building>(building);
             }
             else if (entity is Unit unit)
-            {
-               EntityDestroyer.Destroy<Unit>(unit);
+            { 
+                EntityDestroyer.Destroy<Unit>(unit);
             }
         }
 
@@ -49,16 +49,16 @@ public class RegistryManager : MonoBase
             var entityGuid = entitySaveData.EntityGuids[i];
             var entityPosition = entitySaveData.EntityPositions[i];
             var entityHealth = entitySaveData.EntityHealths[i];
-            
+            var entityTeam = entitySaveData.EntityTeams[i];
             var entityType = _entityRegistry.FindByGuid(entityGuid);
             
             if (entityType is BuildingType building)
             {
-                EntityFactory.LoadEntity<Building>(entityType, entityPosition, entityHealth);
+                EntityFactory<Building>.LoadEntity(entityType, entityPosition, entityHealth, entityTeam);
             }
             else if (entityType is UnitType unit)
             {
-                EntityFactory.LoadEntity<Unit>(entityType, entityPosition, entityHealth);
+                EntityFactory<Unit>.LoadEntity(entityType, entityPosition, entityHealth, entityTeam);
             }
         }
     }
@@ -71,9 +71,7 @@ public class RegistryManager : MonoBase
             print($"{files[i]} Deleted");
             File.Delete(files[i]);
         }
-
-        PlayerPrefs.DeleteAll();
-
+        
         if (Directory.GetFiles(Application.persistentDataPath, "*.dat").Length == 0)
         {
             Debug.Log("Saves Clear Succeed");

@@ -1,35 +1,37 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(EntityVisual))]
-public class Entity: MonoBehaviour, IPointerClickHandler
+public class Entity: MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private EntityVisual _entityVisual;
     
     [Header("Type")]
     public EntityType Type;
-    
-    [Space]
+
+    [Space] 
+    public Team Team;
     public int Health;
     public Vector2Int CurrentPosition;
     
     [EditorButton]
-    public virtual void InitType(EntityType type,Vector2Int position)
+    public virtual void InitType(EntityType type, Vector2Int position, Team team)
     {
         Type = type;
         Health = Type.StartHealth;
         CurrentPosition = position;
+        Team = team;
         
-        name = Type.name;
+        name = $"({Team}){Type.name}";
         transform.position = (Vector3Int)CurrentPosition;
-
+        
         _entityVisual.InitVisual(Type.StartWidth, Type.StartHeight, Type.Sprite);
     }
     
-    public void InitSave(EntityType type, Vector2Int position, int health)
+    public void InitSave(EntityType type, Vector2Int position, int health, Team team)
     {
-        InitType(type, position);
+        InitType(type, position, team);
         Health = health;
         //TODO: set and init cell
     }
@@ -39,8 +41,9 @@ public class Entity: MonoBehaviour, IPointerClickHandler
         CurrentPosition = position;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    private void OnMouseUpAsButton()
     {
-        EventManager.OnMapEntitySelected?.Invoke(this);
+        if(Team == PlayerDataModel.Data.PlayerTeam)
+            EventManager.OnMapEntitySelected?.Invoke(this);
     }
 }

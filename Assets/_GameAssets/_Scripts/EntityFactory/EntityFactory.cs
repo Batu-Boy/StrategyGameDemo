@@ -1,38 +1,47 @@
 using UnityEngine;
 
-public class EntityFactory : MonoBehaviour
+public class EntityFactory<T> where T : Entity
 {
-    public static T CreateEntity<T>(EntityType entityType, Vector2Int position) where T : Entity
+    public static T CreateEntity(EntityType entityType, Vector2Int position)
     {
-        //TODO: seperate pools
         var entity = EntityPool<T>.Instance.GetItem();
-        entity.InitType(entityType, position);
-        GridManager.PlaceEntity(entity, position);
+        entity.InitType(entityType, position, PlayerDataModel.Data.PlayerTeam);
+        
+        if(typeof(T) == typeof(Building))
+            GridManager.PlaceEntity(entity, position);
         return entity;
     }
     
-    public static T CreateEntity<T>(EntityType entityType, Vector3Int position) where T : Entity
+    public static T CreateEntity(EntityType entityType, Vector3Int position)
     {
-        //TODO: seperate pools
         var entity = EntityPool<T>.Instance.GetItem();
-        entity.InitType(entityType, new Vector2Int(position.x, position.y));
-        GridManager.PlaceEntity(entity, new Vector2Int(position.x, position.y));
+        entity.InitType(entityType, new Vector2Int(position.x, position.y), PlayerDataModel.Data.PlayerTeam);
+        
+        if(typeof(T) == typeof(Building))
+            GridManager.PlaceEntity(entity, new Vector2Int(position.x, position.y));
+        
         return entity;
     }
     
-    public static T LoadEntity<T>(EntityType entityType, Vector2Int position, int health) where T : Entity
+    public static T LoadEntity(EntityType entityType, Vector2Int position, int health, Team team)
     {
         var entity = EntityPool<T>.Instance.GetItem();
-        entity.InitSave(entityType, position, health);
-        GridManager.PlaceEntity(entity, position);
+        entity.InitSave(entityType, position, health, team);
+        
+        if(typeof(T) == typeof(Building))
+            GridManager.PlaceEntity(entity, position);
+        
         return entity;
     }
     
-    public static T LoadEntity<T>(EntityType entityType, Vector3Int position, int health) where T : Entity
+    public static T LoadEntity(EntityType entityType, Vector3Int position, int health, Team team)
     {
         var entity = EntityPool<T>.Instance.GetItem();
-        entity.InitSave(entityType, new Vector2Int(position.x, position.y), health);
-        GridManager.PlaceEntity(entity, new Vector2Int(position.x, position.y));
+        entity.InitSave(entityType, new Vector2Int(position.x, position.y), health, team);
+        
+        if(typeof(T) == typeof(Building))
+            GridManager.PlaceEntity(entity, new Vector2Int(position.x, position.y));
+        
         return entity;
     }
 }
