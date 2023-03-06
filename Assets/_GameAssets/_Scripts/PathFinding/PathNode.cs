@@ -24,7 +24,7 @@ public class PathNode
         this.y = y;
         IsEmpty = true;
     }
-
+    
     public void ResetValues()
     {
         g = int.MaxValue;

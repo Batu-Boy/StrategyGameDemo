@@ -5,9 +5,7 @@ public class GridManager : MonoBase
 {
     [SerializeField] private int Width;
     [SerializeField] private int Height;
-
-    [SerializeField] private Collider boundingBox;
-
+    
     public static PathFinder PathFinder;
     
     private static CellGrid _cellGrid;

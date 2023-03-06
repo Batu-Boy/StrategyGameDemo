@@ -5,7 +5,7 @@ public class PathGrid
     public readonly int Width;
     public readonly int Height;
     private readonly PathNode[,] _gridArray;
-
+    
     public PathGrid(int width, int height)
     {
         Width = width;
@@ -25,21 +25,22 @@ public class PathGrid
         ArrangeNeighbors();
     }
 
-    //DOWN = 0, LEFT = 2, UP = 4, RIGHT = 6
+    //DOWN => LEFT => UP => RIGHT
     private void ArrangeNeighbors()
     {
         for (var x = 0; x < Width; x++)
         for (var y = 0; y < Height; y++)
         {
-            var tempNeighbors = new PathNode[8];
+            //TODO:maybe open comment for diagonal path finding
+            var tempNeighbors = new PathNode[4];
             tempNeighbors[0] = GetNode(x, y - 1);
-            tempNeighbors[1] = GetNode(x - 1, y - 1);
-            tempNeighbors[2] = GetNode(x - 1, y);
-            tempNeighbors[3] = GetNode(x - 1, y + 1);
-            tempNeighbors[4] = GetNode(x, y + 1);
-            tempNeighbors[5] = GetNode(x + 1, y + 1);
-            tempNeighbors[6] = GetNode(x + 1, y);
-            tempNeighbors[7] = GetNode(x + 1, y - 1);
+            //tempNeighbors[1] = GetNode(x - 1, y - 1);
+            tempNeighbors[1] = GetNode(x - 1, y);
+            //tempNeighbors[3] = GetNode(x - 1, y + 1);
+            tempNeighbors[2] = GetNode(x, y + 1);
+            //tempNeighbors[5] = GetNode(x + 1, y + 1);
+            tempNeighbors[3] = GetNode(x + 1, y);
+            //tempNeighbors[7] = GetNode(x + 1, y - 1);
             
             GetNode(x, y).SetNeighbors(tempNeighbors);
         }
