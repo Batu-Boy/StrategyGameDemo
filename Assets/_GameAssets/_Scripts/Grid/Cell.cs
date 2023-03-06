@@ -25,8 +25,8 @@ public class Cell
         Entity = entity;
     }
 
-    public void ClearCell() => Entity = null;
-    
+    public void Clear() => Entity = null;
+
     public bool TryGetEntityAs<T>(out T outEntity) where T : Entity
     {
         var entity = Entity;

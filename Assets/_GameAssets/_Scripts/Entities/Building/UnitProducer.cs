@@ -15,7 +15,7 @@ public class UnitProducer : MonoBehaviour
         float halfHeight = dividingHeight / 2f;
         int upperHeight = Mathf.CeilToInt(halfHeight);
         int bottomHeight = dividingHeight - upperHeight;
-
+        
         _spawnPoint = position + Vector2Int.down * (bottomHeight + 1);
     }
 }

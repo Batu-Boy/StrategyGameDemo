@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Archer 3
   m_EditorClassIdentifier: 
   _guid:
-    rid: 5436690363321155688
+    rid: 5436690430474059853
   StartWidth: 1
   StartHeight: 1
   StartHealth: 5
@@ -22,10 +22,11 @@ MonoBehaviour:
   Damage: 1
   Range: 2
   AttackSpeed: 1
+  MoveSpeed: 3
   references:
     version: 2
     RefIds:
-    - rid: 5436690363321155688
+    - rid: 5436690430474059853
       type: {class: Guid, ns: , asm: Assembly-CSharp}
       data:
         guid: 920e4123d83e4459db87df78b56e8a9b

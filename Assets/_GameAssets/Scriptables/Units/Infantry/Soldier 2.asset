@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Soldier 2
   m_EditorClassIdentifier: 
   _guid:
-    rid: 5436690363321155690
+    rid: 5436690430474059856
   StartWidth: 1
   StartHeight: 1
   StartHealth: 10
@@ -22,10 +22,11 @@ MonoBehaviour:
   Damage: 5
   Range: 1
   AttackSpeed: 1
+  MoveSpeed: 2.5
   references:
     version: 2
     RefIds:
-    - rid: 5436690363321155690
+    - rid: 5436690430474059856
       type: {class: Guid, ns: , asm: Assembly-CSharp}
       data:
         guid: 05fa5023fcd0c418a93ce760d97211d2

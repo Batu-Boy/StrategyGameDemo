@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(UnitProducer))]
-public class Building : Entity , IUnitProducer
+public class Building : Entity
 {
     [Header("Type Specific")]
     [SerializeField] private UnitProducer _producer;

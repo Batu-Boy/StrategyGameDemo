@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class GridManager : MonoBase
 {
+    public static PathFinder PathFinder;
+
+    private static CellGrid _cellGrid;
+    private static PathGrid _pathGrid;
+    
     [SerializeField] private int Width;
     [SerializeField] private int Height;
     
-    public static PathFinder PathFinder;
-    
-    private static CellGrid _cellGrid;
-    private static PathGrid _pathGrid;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -18,13 +18,13 @@ public class GridManager : MonoBase
         InitPathGrid();
         EventManager.OnGridInitialized?.Invoke(_cellGrid);
     }
-
+    
     private void InitPathGrid()
     {
         _pathGrid = new PathGrid(Width, Height);
         PathFinder = new PathFinder(ref _pathGrid);
     }
-
+    
     private void InitCellGrid()
     {
         _cellGrid = new CellGrid(Width, Height);
@@ -40,10 +40,11 @@ public class GridManager : MonoBase
     {
         foreach (var settlementPosition in GetSettlementPositions(entity.Type, entity.CurrentPosition))
         {
-            if (!_cellGrid.TryGetCell(settlementPosition, out Cell cell)) continue;
-            
-            cell.Entity = null;
-            _pathGrid.GetNode(settlementPosition).IsEmpty = true;
+            if (!_cellGrid.TryGetCell(settlementPosition, out var cell)) continue;
+
+            cell.Clear();
+            if (entity.GetType() == typeof(Building))
+                _pathGrid.GetNode(settlementPosition).IsEmpty = true;
         }
     }
     
@@ -51,69 +52,69 @@ public class GridManager : MonoBase
     {
         foreach (var settlementPosition in GetSettlementPositions(entity.Type, centerPosition))
         {
-            if (!_cellGrid.TryGetCell(settlementPosition, out Cell cell)) continue;
-            
+            if (!_cellGrid.TryGetCell(settlementPosition, out var cell)) continue;
+
             cell.Entity = entity;
-            _pathGrid.GetNode(settlementPosition).IsEmpty = false;
+            if (entity.GetType() == typeof(Building))
+                _pathGrid.GetNode(settlementPosition).IsEmpty = false;
         }
     }
     
     public static bool IsSettlementValid(EntityType type, Vector2Int centerPosition)
     {
-        if (type.StartWidth == 1 && type.StartHeight == 1)
-        {
-            return IsPositionValid(centerPosition);
-        }
-        
+        if (type.StartWidth == 1 && type.StartHeight == 1) return IsPositionEmpty(centerPosition);
+
         //need good comment
-        return IsPositionsValid(GetSettlementPositions(type, centerPosition));
+        return IsPositionsEmpty(GetSettlementPositions(type, centerPosition));
     }
     
-    private static bool IsPositionsValid(IEnumerable<Vector2Int> positions)
+    private static bool IsPositionsEmpty(IEnumerable<Vector2Int> positions)
     {
         //not going for linq because of performance
         foreach (var position in positions)
-        {
-            if (!IsPositionValid(position))
+            if (!IsPositionEmpty(position))
                 return false;
-        }
 
         return true;
     }
     
-    public static bool IsPositionValid(Vector2Int position)
+    public static bool IsPositionEmpty(Vector2Int position)
     {
         return _cellGrid.GetCell(position) != null && _cellGrid.GetCell(position).IsEmpty;
     }
-    
+
+    public static bool TryGetEntityOnCell(Vector2Int position, out Entity outEntity)
+    {
+        var success = _cellGrid.TryGetEntity(position, out var entity);
+        outEntity = entity;
+        return success;
+    }
+
     private static IEnumerable<Vector2Int> GetSettlementPositions(EntityType type, Vector2Int centerPosition)
     {
-        List<Vector2Int> settlementPositions = new List<Vector2Int>();
-        
+        var settlementPositions = new List<Vector2Int>();
+
         if (type.StartWidth == 1 && type.StartHeight == 1)
         {
             settlementPositions.Add(centerPosition);
             return settlementPositions;
         }
-        
-        int dividingWidth = type.StartWidth - 1;
-        int dividingHeight = type.StartHeight - 1;
 
-        float halfWidth = dividingWidth / 2f;
-        float halfHeight = dividingHeight / 2f;
-        
-        int upperWidth = Mathf.CeilToInt(halfWidth);
-        int upperHeight = Mathf.CeilToInt(halfHeight);
-        
-        int bottomWidth = dividingWidth - upperWidth;
-        int bottomHeight = dividingHeight - upperHeight;
-        
-        for (int x = centerPosition.x - bottomWidth; x < centerPosition.x + upperWidth + 1; x++)
-        for (int y = centerPosition.y - bottomHeight; y < centerPosition.y + upperHeight + 1; y++)
-        {
+        var dividingWidth = type.StartWidth - 1;
+        var dividingHeight = type.StartHeight - 1;
+
+        var halfWidth = dividingWidth / 2f;
+        var halfHeight = dividingHeight / 2f;
+
+        var upperWidth = Mathf.CeilToInt(halfWidth);
+        var upperHeight = Mathf.CeilToInt(halfHeight);
+
+        var bottomWidth = dividingWidth - upperWidth;
+        var bottomHeight = dividingHeight - upperHeight;
+
+        for (var x = centerPosition.x - bottomWidth; x < centerPosition.x + upperWidth + 1; x++)
+        for (var y = centerPosition.y - bottomHeight; y < centerPosition.y + upperHeight + 1; y++)
             settlementPositions.Add(new Vector2Int(x, y));
-        }
-
 
         return settlementPositions;
     }

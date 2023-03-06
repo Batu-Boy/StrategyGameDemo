@@ -9,7 +9,7 @@ public class Entity: MonoBehaviour
     
     [Header("Type")]
     public EntityType Type;
-
+    
     [Space] 
     public Team Team;
     public int Health;

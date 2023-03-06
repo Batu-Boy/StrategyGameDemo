@@ -3,18 +3,27 @@ using UnityEngine;
 
 public class Path
 {
-    public List<Vector2Int> wayPoints;
-    public bool IsComplete => wayPoints.Count <= 0;
+    public List<Vector2Int> WayPoints;
+    public bool IsComplete => WayPoints.Count <= 0;
     
     public Path(List<Vector2Int> wayPoints)
     {
-        this.wayPoints = wayPoints;
+        WayPoints = wayPoints;
+    }
+
+    public void RemovePointFromEnd(int count)
+    {
+        if (WayPoints.Count < count) return;
+        for (int i = 0; i < count; i++)
+        {
+            WayPoints.RemoveAt(WayPoints.Count - 1);
+        }
     }
 
     public Vector3 GetNextPoint()
     {
-        var nextPoint = wayPoints[0];
-        wayPoints.RemoveAt(0);
+        var nextPoint = WayPoints[0];
+        WayPoints.RemoveAt(0);
         return nextPoint.ToMapPos();
     }
 }

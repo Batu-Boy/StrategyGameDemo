@@ -9,20 +9,22 @@ public class PathFinder
 {
     private PathGrid _pathGrid;
 
-    private List<PathNode> _openList;
+    private BinaryHeap _openList;
     private List<PathNode> _closedList;
 
     public PathFinder(ref PathGrid pathGrid)
     {
         _pathGrid = pathGrid;
         _closedList = new List<PathNode>();
-        _openList = new List<PathNode>();
+        _openList = new BinaryHeap(128);
     }
-
+    
     public Path FindPath(Vector2Int startPos, Vector2Int endPos)
     {
+        Debug.Log("Pathfinding Start");
         var startNode = _pathGrid.GetNode(startPos);
         var endNode = _pathGrid.GetNode(endPos);
+        PathNode lowestHNode = startNode;
         
         _closedList.Clear();
         _openList.Clear();
@@ -43,13 +45,12 @@ public class PathFinder
 
         while (_openList.Count > 0)
         {
-            PathNode currentNode = GetLowestFCostNode(_openList);
+            PathNode currentNode = _openList.ExtractMin();
             if (currentNode == endNode)
             {
                return CalculatePath(endNode);
             }
 
-            _openList.Remove(currentNode);
             _closedList.Add(currentNode);
             
             foreach (var neighborNode in currentNode.GetNeighbors())
@@ -69,15 +70,17 @@ public class PathFinder
                     neighborNode.g = tempG;
                     neighborNode.h = CalculateDistanceCost(neighborNode, endNode);
                     neighborNode.CalculateF();
-                    
-                    if(!_openList.Contains(neighborNode))
-                        _openList.Add(neighborNode) ;
+                    if (neighborNode.h < lowestHNode.h)
+                    {
+                        lowestHNode = neighborNode;
+                    }
+                    _openList.Add(neighborNode) ;
                 }
             }
         }
         
-        Debug.LogError("Path Can't Find!");
-        return null;
+        Debug.LogWarning("Path Can't Find! Implement Nearest Point");
+        return FindPath(startPos, lowestHNode.Position);
     }
      
     private Path CalculatePath(PathNode endNode)
@@ -106,16 +109,17 @@ public class PathFinder
         return Mathf.Min(xDif, yDif) * 14 + remaining * 10;
     }
 
-    private PathNode GetLowestFCostNode(List<PathNode> list)
+    private PathNode GetLowestHCostNode(List<PathNode> list)
     {
-        PathNode lowestFCostNode = list[0];
-
+        
+        PathNode lowestHCostNode = list[0];
+        
         for (var i = 1; i < list.Count; i++)
         {
-            if (list[i].f < lowestFCostNode.f)
-                lowestFCostNode = list[i];
+            if (list[i].h < lowestHCostNode.h)
+                lowestHCostNode = list[i];
         }
 
-        return lowestFCostNode; 
+        return lowestHCostNode; 
     }
 }

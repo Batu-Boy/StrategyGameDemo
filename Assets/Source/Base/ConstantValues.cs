@@ -2,6 +2,7 @@ using UnityEngine;
 
 public static class ConstantValues
 {
+    public const int NotInHeap = int.MaxValue;
     public const int MAXROWS = 20;
     public const int MINROWS = 10;
     public const int MAXCOLUMNS = 20;

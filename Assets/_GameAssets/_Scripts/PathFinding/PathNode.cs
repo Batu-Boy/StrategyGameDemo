@@ -13,6 +13,8 @@ public class PathNode
     public int h;
     public int f;
 
+    public int heapIndex = ConstantValues.NotInHeap;
+
     public PathNode CameFromNode; 
     
     //DOWN = 0, LEFT = 2, UP = 4, RIGHT = 6

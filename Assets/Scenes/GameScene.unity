@@ -1172,7 +1172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Width: 64
   Height: 64
-  boundingBox: {fileID: 0}
 --- !u!1001 &245514182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1545,7 +1544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &309283790
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4941,7 +4940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1121962737
 RectTransform:
   m_ObjectHideFlags: 0

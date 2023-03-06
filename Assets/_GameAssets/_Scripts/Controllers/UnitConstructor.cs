@@ -1,6 +1,6 @@
 public class UnitConstructor : MonoBase
 {
-    private IUnitProducer _selectedProducer;
+    private Building _selectedProducer;
     
     public override void Initialize()
     {
@@ -12,7 +12,7 @@ public class UnitConstructor : MonoBase
 
     private void OnMapEntitySelect(Entity selectedMapEntity)
     {
-        if (selectedMapEntity is IUnitProducer unitProducer)
+        if (selectedMapEntity is Building unitProducer)
         {
             _selectedProducer = unitProducer;
         }
@@ -24,6 +24,7 @@ public class UnitConstructor : MonoBase
     
     private void OnUnitUISelect(UnitType producingUnit)
     {
-        _selectedProducer?.Produce(producingUnit);
+        if(_selectedProducer)
+            _selectedProducer.Produce(producingUnit);
     }
 }
