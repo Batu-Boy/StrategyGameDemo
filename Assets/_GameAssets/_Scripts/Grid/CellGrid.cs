@@ -45,7 +45,6 @@ public class CellGrid
         }
 
         return outElement = _gridArray[x, y].Entity;
-        ;
     }
 
     public bool TryGetEntity(Vector2Int position, out Entity outElement)

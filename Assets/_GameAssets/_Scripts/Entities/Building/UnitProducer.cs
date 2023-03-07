@@ -4,9 +4,9 @@ public class UnitProducer : MonoBehaviour
 {
     public Vector2Int _spawnPoint;
 
-    public void ProduceUnit(UnitType unitType)
+    public void ProduceUnit(UnitType unitType, Team team)
     {
-        EntityFactory<Unit>.CreateEntity(unitType, _spawnPoint);
+        EntityFactory<Unit>.CreateEntity(unitType, _spawnPoint, team);
     }
     
     public void CalculateSpawnPoint(int height, Vector2Int position)

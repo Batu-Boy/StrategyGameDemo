@@ -31,9 +31,11 @@ public class UnitController : MonoBase
         if (!Input.GetMouseButtonDown(1)) return;
 
         var mouseGridPosition = InputHelper.GetMouseGridPosition();
+        if(!GridManager.IsPositionOnGrid(mouseGridPosition)) return;
+        
         if (GridManager.TryGetEntityOnCell(mouseGridPosition, out var entity))
         {
-            if (entity.Team != PlayerDataModel.Data.PlayerTeam)
+            if (entity.Team != _selectedUnits[0].Team)
                 Attack(entity);
         }
         else
@@ -44,17 +46,11 @@ public class UnitController : MonoBase
     
     private void Attack(Entity to)
     {
-        var path = GridManager.PathFinder.FindPath(_selectedUnits[0].CurrentPosition, to.CurrentPosition);
-        if(path == null) return;
-        path.RemovePointFromEnd(_selectedUnits[0].Range);
-        if(path.WayPoints.Count > 0)
-            _selectedUnits[0].MoveAlong(path);
+        _selectedUnits[0].Chase(to);
     }
     
     private void Move(Vector2Int gridPosition)
     {
-        var path = GridManager.PathFinder.FindPath(_selectedUnits[0].CurrentPosition, gridPosition);
-        if(path != null && path.WayPoints.Count > 0)
-            _selectedUnits[0].MoveAlong(path);
+        _selectedUnits[0].MoveTo(gridPosition);
     }
 }

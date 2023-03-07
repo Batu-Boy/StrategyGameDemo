@@ -59,6 +59,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 50d7a208931ea48ca9ff50b9d8491de2, type: 3}
   - {fileID: 21300000, guid: 93afd12bda0824cdd9e2f2205f071cb1, type: 3}
   - {fileID: 21300000, guid: 4be10e3bc1ab341ae917048d4a921578, type: 3}
+  - {fileID: 7482667652216324306, guid: 0352604cd56454230b7e8756a333a3cd, type: 3}
   - {fileID: 21300000, guid: e8c93fecd1c87453caec5d51a4e60f64, type: 3}
   - {fileID: 21300000, guid: 55e9f65dc193b4d38949e7c8d14446a8, type: 3}
   - {fileID: 21300000, guid: 7a3cb27dd201f4086900e59b4e11370f, type: 3}
@@ -72,6 +73,7 @@ SpriteAtlas:
   - Archer 3
   - Archer 2
   - ProductionMenu
+  - Square
   - Archer 1
   - Information
   - Barracks

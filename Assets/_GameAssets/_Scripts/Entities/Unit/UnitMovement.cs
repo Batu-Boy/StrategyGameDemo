@@ -5,36 +5,29 @@ using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    public bool IsMoving => _currentPath != null;
+    [SerializeField] private bool gizmos;
     
     private Unit _unit;
     private Path _currentPath;
     private Coroutine _movementCoroutine;
     
-    public void SetMovementSpeed(Unit unit)
+    public void Init(Unit unit)
     {
         _unit = unit;
     }
     
-    public void Move(Path path)
+    public void Move(Vector2Int position, Action onComplete = null)
     {
         StopMovement();
-        _currentPath = path;
-        _movementCoroutine = StartCoroutine(MovementCoroutine());
+        _currentPath = GetPath(_unit.CurrentPosition, position);
+        _movementCoroutine = StartCoroutine(MovementCoroutine(_currentPath, onComplete));
     }
     
-    public void Move(Path path, Action onComplete)
+    private IEnumerator MovementCoroutine(Path path,Action onComplete = null)
     {
-        StopMovement();
-        _currentPath = path;
-        _movementCoroutine = StartCoroutine(MovementCoroutine(onComplete));
-    }
-    
-    private IEnumerator MovementCoroutine(Action onComplete)
-    {
-        while (_currentPath.WayPoints.Count != 0)
+        while (path.WayPoints.Count != 0)
         {
-            var nextTargetPoint = _currentPath.GetNextPoint();
+            var nextTargetPoint = path.GetNextPoint();
             float distance = Vector3.Distance(nextTargetPoint, transform.position);
             float duration = distance / _unit.MoveSpeed;
             transform.DOMove(nextTargetPoint, duration).SetEase(Ease.Linear).SetId(this);
@@ -42,36 +35,37 @@ public class UnitMovement : MonoBehaviour
             _unit.UpdatePosition(nextTargetPoint.ToGridPos());
         }
         
-        if (_currentPath.IsComplete)
+        if (path.IsComplete)
         {
             onComplete?.Invoke();
-            _currentPath = null;
-        }
-    }
-    
-    private IEnumerator MovementCoroutine()
-    {
-        while (_currentPath.WayPoints.Count != 0)
-        {
-            var nextTargetPoint = _currentPath.GetNextPoint();
-            float distance = Vector3.Distance(nextTargetPoint, transform.position);
-            float duration = distance / _unit.MoveSpeed;
-            transform.DOMove(nextTargetPoint, duration).SetEase(Ease.Linear).SetId(this);
-            yield return new WaitForSeconds(duration);
-            _unit.UpdatePosition(nextTargetPoint.ToGridPos());
-        }
-        
-        if (_currentPath.IsComplete)
-        {
-            _currentPath = null;
         }
     }
 
-    private void StopMovement()
+    private Path GetPath(Vector2Int from,Vector2Int targetPosition)
+    {
+        return GridManager.PathFinder.FindPath(from, targetPosition);
+    }
+    
+    public void StopMovement()
     {
         _currentPath = null;
-        DOTween.Kill(this);
         if(_movementCoroutine != null)
             StopCoroutine(_movementCoroutine);
+        DOTween.Kill(this);
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(!gizmos) return;
+        
+        if(_currentPath == null) return;
+
+        if(_currentPath.WayPoints.Count <= 1) return;
+        
+        Gizmos.color = Color.green;
+        for (int i = 0; i < _currentPath.WayPoints.Count - 2; i++)
+        {
+            Gizmos.DrawLine(_currentPath.WayPoints[i].ToMapPos(), _currentPath.WayPoints[i + 1].ToMapPos());
+        }
     }
 }

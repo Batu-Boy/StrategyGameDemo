@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using Cinemachine;
 using UnityEngine;
 
 public class PathFinder
@@ -21,7 +17,6 @@ public class PathFinder
     
     public Path FindPath(Vector2Int startPos, Vector2Int endPos)
     {
-        Debug.Log("Pathfinding Start");
         var startNode = _pathGrid.GetNode(startPos);
         var endNode = _pathGrid.GetNode(endPos);
         PathNode lowestHNode = startNode;
@@ -79,7 +74,6 @@ public class PathFinder
             }
         }
         
-        Debug.LogWarning("Path Can't Find! Implement Nearest Point");
         return FindPath(startPos, lowestHNode.Position);
     }
      
@@ -107,19 +101,5 @@ public class PathFinder
         int yDif = Mathf.Abs(a.y - b.y);
         int remaining = Mathf.Abs(xDif - yDif);
         return Mathf.Min(xDif, yDif) * 14 + remaining * 10;
-    }
-
-    private PathNode GetLowestHCostNode(List<PathNode> list)
-    {
-        
-        PathNode lowestHCostNode = list[0];
-        
-        for (var i = 1; i < list.Count; i++)
-        {
-            if (list[i].h < lowestHCostNode.h)
-                lowestHCostNode = list[i];
-        }
-
-        return lowestHCostNode; 
     }
 }

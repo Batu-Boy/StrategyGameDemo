@@ -33,11 +33,11 @@ public class RegistryManager : MonoBase
         {
             if (entity is Building building)
             {
-                EntityDestroyer.Destroy<Building>(building);
+                EntityDestroyer.DestroyEntity<Building>(building);
             }
             else if (entity is Unit unit)
             { 
-                EntityDestroyer.Destroy<Unit>(unit);
+                EntityDestroyer.DestroyEntity<Unit>(unit);
             }
         }
 

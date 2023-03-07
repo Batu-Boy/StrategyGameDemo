@@ -15,6 +15,6 @@ public class Building : Entity
     
     public void Produce(UnitType unitType)
     {
-        _producer.ProduceUnit(unitType);
+        _producer.ProduceUnit(unitType, Team);
     }
 }

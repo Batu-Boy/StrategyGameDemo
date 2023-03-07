@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 /// <summary>
 /// A min-type priority queue of Nodes
 /// </summary>
@@ -13,7 +12,7 @@ public class BinaryHeap
     int count;
 
     #endregion
-
+    
     private struct HeapNode
     {
         public PathNode node;
@@ -38,15 +37,7 @@ public class BinaryHeap
 
     public bool Contains(PathNode node)
     {
-        for (int i = 0; i < count; i++)
-        {
-            if (heap[i].node == node)
-            {
-                return true;
-            }
-        }
-        
-        return false;
+        return node.heapIndex != ConstantValues.NotInHeap;
     }
 
     /// <summary>

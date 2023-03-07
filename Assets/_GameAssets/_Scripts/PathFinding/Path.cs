@@ -13,7 +13,11 @@ public class Path
 
     public void RemovePointFromEnd(int count)
     {
-        if (WayPoints.Count < count) return;
+        if (WayPoints.Count < count)
+        {
+            WayPoints.Clear();
+            return;
+        }
         for (int i = 0; i < count; i++)
         {
             WayPoints.RemoveAt(WayPoints.Count - 1);

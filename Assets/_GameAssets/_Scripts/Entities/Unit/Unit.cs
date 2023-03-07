@@ -1,16 +1,25 @@
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 [RequireComponent(typeof(UnitMovement))]
-public class Unit : Entity, IMovable
+[RequireComponent(typeof(UnitAttack))]
+[RequireComponent(typeof(EnemyDetector))]
+public class Unit : Entity
 {
     [field: Header("Type Specific")]
     [field: SerializeField] public int Damage { get; private set; }
-    [field: SerializeField] public int Range { get; private set; }
+    [field: SerializeField] public float Range { get; private set; }
     [field: SerializeField] public float AttackSpeed { get; private set; }
     [field: SerializeField] public float MoveSpeed { get; private set; }
-    
+
+    [Header("References")]
     [SerializeField] private UnitMovement _movement;
+    [SerializeField] private UnitAttack _attack;
+    [SerializeField] private EnemyDetector _enemyDetector;
     
+    [Header("Debug")]
+    [SerializeField] private Entity _target;
+
     public override void InitType(EntityType type, Vector2Int position, Team team)
     {
         base.InitType(type, position, team);
@@ -18,23 +27,66 @@ public class Unit : Entity, IMovable
         Range = ((UnitType)type).Range;
         AttackSpeed = ((UnitType)type).AttackSpeed;
         MoveSpeed = ((UnitType)type).MoveSpeed;
-        //TODO: not happy with
-        _movement.SetMovementSpeed(this);
+        InitComponents();
     }
     
-    public void MoveAlong(Path path)
+    private void InitComponents()
     {
-        print("move");
-        _movement.Move(path);
+        if (!_movement)
+            _movement = gameObject.AddComponent<UnitMovement>();
+        if (!_attack)
+            _attack = gameObject.AddComponent<UnitAttack>();
+        if (!_enemyDetector)
+            _enemyDetector = gameObject.AddComponent<EnemyDetector>();
+
+        _enemyDetector.Init(this);
+        _movement.Init(this);
+        _attack.Init(this);
+
+        _enemyDetector.OnTargetDetected += OnTargetInRange;
     }
     
-    public void Attack(Entity to, Path path)
+    public void MoveTo(Vector2Int targetPosition)
     {
-        _movement.Move(path,()=> GiveDamage(to));
+        ClearTarget();
+        _movement.Move(targetPosition);
+    }
+    
+    public void Chase(Entity target)
+    {
+        SetTarget(target);
+        _enemyDetector.StartDetection(target.transform);
+        _movement.Move(target.CurrentPosition);
+    }
+    
+    private void OnTargetMove()
+    {
+        if(Vector2Int.Distance(_target.CurrentPosition,CurrentPosition) <= Range) return;
+        
+        _enemyDetector.StartDetection(_target.transform);
+        _movement.Move(_target.CurrentPosition);
+    }
+    
+    private void OnTargetInRange()
+    {
+        print("in range");
+        _movement.StopMovement();
+        _attack.StartAttack(_target);
     }
 
-    private void GiveDamage(Entity entity)
+    public void SetTarget(Entity target)
     {
-        //TODO: implement idamageable and damaging with attack speed
+        _target = target;
+        _target.onPositionChange += OnTargetMove;
+    }
+
+    public void ClearTarget()
+    {
+        _attack.StopAttack();
+        _movement.StopMovement();
+        _enemyDetector.StopDetection();
+        if(_target)
+            _target.onPositionChange -= OnTargetMove;
+        _target = null;
     }
 }

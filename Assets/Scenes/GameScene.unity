@@ -1170,8 +1170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12a506cf6f16a462297e80739d188f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Width: 64
-  Height: 64
+  _width: 64
+  _height: 64
 --- !u!1001 &245514182
 PrefabInstance:
   m_ObjectHideFlags: 0

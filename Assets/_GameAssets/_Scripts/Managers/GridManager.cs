@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GridManager : MonoBase
 {
@@ -8,12 +9,17 @@ public class GridManager : MonoBase
     private static CellGrid _cellGrid;
     private static PathGrid _pathGrid;
     
-    [SerializeField] private int Width;
-    [SerializeField] private int Height;
+    [SerializeField] private int _width;
+    [SerializeField] private int _height;
+
+    public static int Width;
+    public static int Height;
     
     public override void Initialize()
     {
         base.Initialize();
+        Width = _width;
+        Height = _height;
         InitCellGrid();
         InitPathGrid();
         EventManager.OnGridInitialized?.Invoke(_cellGrid);
@@ -21,13 +27,13 @@ public class GridManager : MonoBase
     
     private void InitPathGrid()
     {
-        _pathGrid = new PathGrid(Width, Height);
+        _pathGrid = new PathGrid(_width, _height);
         PathFinder = new PathFinder(ref _pathGrid);
     }
     
     private void InitCellGrid()
     {
-        _cellGrid = new CellGrid(Width, Height);
+        _cellGrid = new CellGrid(_width, _height);
     }
     
     public void ClearGrid()
@@ -88,6 +94,16 @@ public class GridManager : MonoBase
         var success = _cellGrid.TryGetEntity(position, out var entity);
         outEntity = entity;
         return success;
+    }
+    
+    public static Cell GetCell(Vector2Int position)
+    {
+        return _cellGrid.GetCell(position);
+    }
+
+    public static bool IsPositionOnGrid(Vector2Int position)
+    {
+        return position.x < Width && position.y < Height && position.x >= 0 && position.y >= 0;
     }
 
     private static IEnumerable<Vector2Int> GetSettlementPositions(EntityType type, Vector2Int centerPosition)

@@ -13,20 +13,19 @@ MonoBehaviour:
   m_Name: Soldier 3
   m_EditorClassIdentifier: 
   _guid:
-    rid: 5436690430474059855
+    rid: 5436690452632567809
   StartWidth: 1
   StartHeight: 1
   StartHealth: 10
   Sprite: {fileID: 21300000, guid: 9c119b23942cf4883b8ff23168affef4, type: 3}
-  EntityPrefab: {fileID: 2393228360990086294, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
   Damage: 2
-  Range: 1
+  Range: 0.5
   AttackSpeed: 1
   MoveSpeed: 2.5
   references:
     version: 2
     RefIds:
-    - rid: 5436690430474059855
+    - rid: 5436690452632567809
       type: {class: Guid, ns: , asm: Assembly-CSharp}
       data:
         guid: 6db92e19c7d3547feae20379a89697a4

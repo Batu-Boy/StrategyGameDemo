@@ -2,6 +2,17 @@ using UnityEngine;
 
 public class EntityFactory<T> where T : Entity
 {
+    
+    public static T CreateEntity(EntityType entityType, Vector2Int position, Team team)
+    {
+        var entity = EntityPool<T>.Instance.GetItem();
+        entity.InitType(entityType, position, team);
+
+        GridManager.PlaceEntity(entity, position);
+
+        return entity;
+    }
+    
     public static T CreateEntity(EntityType entityType, Vector2Int position)
     {
         var entity = EntityPool<T>.Instance.GetItem();
@@ -11,7 +22,7 @@ public class EntityFactory<T> where T : Entity
 
         return entity;
     }
-
+    
     public static T CreateEntity(EntityType entityType, Vector3Int position)
     {
         var entity = EntityPool<T>.Instance.GetItem();

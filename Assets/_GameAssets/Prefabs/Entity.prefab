@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2430926526256403544}
   - component: {fileID: 2430926526256403545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2430926526426773035}
   - component: {fileID: 6524762375867140595}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 7997971876032487646}
   - component: {fileID: 6682938431729541488}
   - component: {fileID: 3954231836928801505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Entity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,6 @@ MonoBehaviour:
   _entityVisual: {fileID: 6682938431729541488}
   Type: {fileID: 0}
   Team: 0
-  Health: 0
   CurrentPosition: {x: 0, y: 0}
 --- !u!114 &6682938431729541488
 MonoBehaviour:
