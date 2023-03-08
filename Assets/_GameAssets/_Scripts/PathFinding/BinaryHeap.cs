@@ -70,7 +70,6 @@ public class BinaryHeap
     void Expand () {
         // 65533 == 1 mod 4 and slightly smaller than 1<<16 = 65536
         int newSize = heap.Length + 16;
-        Debug.LogWarning("Expanding Heap");
         var newHeap = new HeapNode[newSize];
         heap.CopyTo(newHeap, 0);
         heap = newHeap;

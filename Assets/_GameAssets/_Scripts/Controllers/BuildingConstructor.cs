@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-//TODO: seperate visual
 public class BuildingConstructor : MonoBase
 {
     [SerializeField] private Transform _silhouette;

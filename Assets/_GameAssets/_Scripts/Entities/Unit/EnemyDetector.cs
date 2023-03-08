@@ -25,25 +25,42 @@ public class EnemyDetector : MonoBehaviour
         _detectionRange = unit.Range + .5f;
     }
     
-    private IEnumerator Detection(Transform target)
+    private IEnumerator Detection()
     {
-        if(!target) yield break;
-        _enemyCount = Physics2D.OverlapCircleNonAlloc(transform.position, _detectionRange, _enemies, _targetLayer);
-        if(CheckTargetReached(target)) yield break;
+        while (_target)
+        {
+            _enemyCount = Physics2D.OverlapCircleNonAlloc(transform.position, _detectionRange, _enemies, _targetLayer);
+            if(CheckTargetReached()) yield break;
         
-        yield return _detectWait;
-        
-        if(!target) yield break;
-        _detectionCoroutine = StartCoroutine(Detection(target));
+            yield return _detectWait;
+        }
+
+        //_detectionCoroutine = StartCoroutine(Detection(target));
     }
-    
-    private bool CheckTargetReached(Transform target)
+
+    public bool OneStepDetection(Transform target)
     {
+        _enemyCount = Physics2D.OverlapCircleNonAlloc(transform.position, _detectionRange, _enemies, _targetLayer);
         if (_enemyCount <= 1) return false;
-        
         for (int i = 0; i < _enemyCount; i++)
         {
             if (_enemies[i].transform == target)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    private bool CheckTargetReached()
+    {
+        if (_enemyCount <= 1) return false;
+        if (!_target) return false;
+        
+        for (int i = 0; i < _enemyCount; i++)
+        {
+            if (_enemies[i].transform == _target)
             {
                 OnTargetDetected?.Invoke();
                 StopDetection();
@@ -55,12 +72,16 @@ public class EnemyDetector : MonoBehaviour
     
     public void StartDetection(Transform target)
     {
-        _detectionCoroutine = StartCoroutine(Detection(target));
+        _target = target;
+        if (_detectionCoroutine != null)
+            StopCoroutine(_detectionCoroutine);
+        _detectionCoroutine = StartCoroutine(Detection());
     }
 
     public void StopDetection()
     {
         _enemyCount = 0;
+        _target = null;
         if(_detectionCoroutine != null)
             StopCoroutine(_detectionCoroutine);
     }
@@ -80,7 +101,12 @@ public class EnemyDetector : MonoBehaviour
 
         return closestEnemy;
     }
-    
+
+    private void OnDisable()
+    {
+        StopDetection();
+    }
+
     private void OnDrawGizmos()
     {
         if(!gizmos) return;

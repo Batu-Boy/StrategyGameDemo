@@ -46,6 +46,7 @@ public class CameraController : ControllerBase
     private void Zoom()
     {
         if(Input.mouseScrollDelta.magnitude < .1f) return;
+        if(EventSystem.current.IsPointerOverGameObject()) return;
 
         ReArrangeOrthoSize();
     }

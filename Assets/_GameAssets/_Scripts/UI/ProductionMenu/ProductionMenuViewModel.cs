@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ProductionMenuViewModel : ScreenElement
 {
@@ -7,20 +8,26 @@ public class ProductionMenuViewModel : ScreenElement
     
     [Header("References")]
     [SerializeField] private BuildingTypeUI _buildingTypeUIPrefab;
-    [SerializeField] private RectTransform _nodeParent;
-
+    [SerializeField] private RectTransform _layoutGroup;
+    [SerializeField] private InfiniteScrollView _infiniteScrollView;
+    
     public override void Initialize()
     {
         base.Initialize();
-        ListBuildings();
+        ListBuildings(_infiniteScrollView.GetNecessaryElementCount());
+        _infiniteScrollView.Init();
     }
-
-    private void ListBuildings()
+    
+    private void ListBuildings(int atLeast)
     {
-        foreach (var buildingType in _listingBuildings)
-        {
-            var buildingUI = Instantiate(_buildingTypeUIPrefab, _nodeParent);
-            buildingUI.SetData(buildingType);
-        }
-    }    
+        
+        int iteration = Mathf.CeilToInt((atLeast + 2) / _listingBuildings.Count);
+
+        for (int i = 0; i < iteration; i++)
+            foreach (var buildingType in _listingBuildings)
+            {
+                var buildingUI = Instantiate(_buildingTypeUIPrefab, _layoutGroup);
+                buildingUI.SetData(buildingType);
+            }
+    }
 }

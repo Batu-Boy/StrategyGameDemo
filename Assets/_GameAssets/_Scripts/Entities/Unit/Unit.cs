@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 [RequireComponent(typeof(UnitMovement))]
 [RequireComponent(typeof(UnitAttack))]
@@ -29,7 +28,7 @@ public class Unit : Entity
         MoveSpeed = ((UnitType)type).MoveSpeed;
         InitComponents();
     }
-    
+
     private void InitComponents()
     {
         if (!_movement)
@@ -54,22 +53,32 @@ public class Unit : Entity
     
     public void Chase(Entity target)
     {
+        if(_target)
+            ClearTarget();
         SetTarget(target);
-        _enemyDetector.StartDetection(target.transform);
-        _movement.Move(target.CurrentPosition);
+
+        if (!_enemyDetector.OneStepDetection(_target.transform))
+        {
+            _enemyDetector.StartDetection(target.transform);
+            _movement.Move(target.CurrentPosition);
+        }
+        else
+        {
+            OnTargetInRange();
+        }
     }
     
     private void OnTargetMove()
     {
-        if(Vector2Int.Distance(_target.CurrentPosition,CurrentPosition) <= Range) return;
+        if(_enemyDetector.OneStepDetection(_target.transform)) return;
         
+        _attack.StopAttack();
         _enemyDetector.StartDetection(_target.transform);
         _movement.Move(_target.CurrentPosition);
     }
     
     private void OnTargetInRange()
     {
-        print("in range");
         _movement.StopMovement();
         _attack.StartAttack(_target);
     }
@@ -88,5 +97,10 @@ public class Unit : Entity
         if(_target)
             _target.onPositionChange -= OnTargetMove;
         _target = null;
+    }
+    
+    protected override void Die()
+    {
+        EntityDestroyer.DestroyEntity(this);
     }
 }

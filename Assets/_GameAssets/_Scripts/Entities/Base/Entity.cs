@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(EntityVisual))]
-public class Entity: MonoBehaviour, IDamageable
+public abstract class Entity: MonoBehaviour, IDamageable
 {
     [Header("References")] 
     [SerializeField] private EntityVisual _entityVisual;
@@ -35,13 +35,13 @@ public class Entity: MonoBehaviour, IDamageable
         isDead = false;
         
         _entityVisual.InitVisual(Type.StartWidth, Type.StartHeight, Type.Sprite, Team);
+        _entityVisual.UpdateHpVisual(Health / (float)Type.StartHealth);
     }
     
     public void InitSave(EntityType type, Vector2Int position, int health, Team team)
     {
         InitType(type, position, team);
         Health = health;
-        //TODO: set and init cell
     }
     
     public void UpdatePosition(Vector2Int position)
@@ -62,22 +62,24 @@ public class Entity: MonoBehaviour, IDamageable
         if(!EventSystem.current.IsPointerOverGameObject())
             EventManager.OnMapEntitySelected?.Invoke(this);
     }
-
-    private void OnDestroy()
+    
+    private void OnDisable()
     {
         _currentCell?.Clear();
         _currentCell = null;
     }
-
+    
     public void TakeDamage(int amount)
     {
         Health -= amount;
-        _entityVisual.OnHPChange(Health / (float)Type.StartHealth);
+        _entityVisual.UpdateHpVisual(Health / (float)Type.StartHealth);
+        
         if (Health <= 0 && !isDead)
         {
             isDead = true;
-            EntityDestroyer.DestroyEntity(this);
+            Die();
         }
     }
-
+    
+    protected abstract void Die();
 }

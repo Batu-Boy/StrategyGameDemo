@@ -17,4 +17,9 @@ public class Building : Entity
     {
         _producer.ProduceUnit(unitType, Team);
     }
+    
+    protected override void Die()
+    {
+        EntityDestroyer.DestroyEntity(this);
+    }
 }

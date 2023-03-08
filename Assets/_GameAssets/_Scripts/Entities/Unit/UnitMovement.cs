@@ -27,6 +27,8 @@ public class UnitMovement : MonoBehaviour
     {
         while (path.WayPoints.Count != 0)
         {
+            if(!transform) yield break;
+            print("move step");
             var nextTargetPoint = path.GetNextPoint();
             float distance = Vector3.Distance(nextTargetPoint, transform.position);
             float duration = distance / _unit.MoveSpeed;
@@ -49,8 +51,11 @@ public class UnitMovement : MonoBehaviour
     public void StopMovement()
     {
         _currentPath = null;
-        if(_movementCoroutine != null)
+        if (_movementCoroutine != null)
+        {
             StopCoroutine(_movementCoroutine);
+            _movementCoroutine = null;
+        }
         DOTween.Kill(this);
     }
 
@@ -67,5 +72,11 @@ public class UnitMovement : MonoBehaviour
         {
             Gizmos.DrawLine(_currentPath.WayPoints[i].ToMapPos(), _currentPath.WayPoints[i + 1].ToMapPos());
         }
+    }
+
+    private void OnDisable()
+    {
+        StopMovement();
+        DOTween.Kill(this);
     }
 }

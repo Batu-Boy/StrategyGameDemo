@@ -152,7 +152,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2430926526737883878}
-  - component: {fileID: 7997971876032487646}
   - component: {fileID: 6682938431729541488}
   - component: {fileID: 3954231836928801505}
   m_Layer: 6
@@ -178,22 +177,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7997971876032487646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2430926526737883872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8a8ee83714e42da92fffb96021b1709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _entityVisual: {fileID: 6682938431729541488}
-  Type: {fileID: 0}
-  Team: 0
-  CurrentPosition: {x: 0, y: 0}
 --- !u!114 &6682938431729541488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +192,8 @@ MonoBehaviour:
   _graphic: {fileID: 2430926526426773035}
   _spriteRenderer: {fileID: 2430926526256403545}
   _collider: {fileID: 6524762375867140595}
+  _hpScaler: {fileID: 0}
+  _hpBar: {fileID: 0}
 --- !u!50 &3954231836928801505
 Rigidbody2D:
   serializedVersion: 4

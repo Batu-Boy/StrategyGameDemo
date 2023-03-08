@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class UnitAttack : MonoBehaviour
     private WaitForSeconds _attackWait;
     private WaitForSeconds _halfAttackWait;
     private Coroutine _attackCoroutine;
+    private IDamageable _target;
     
     public void Init(Unit unit)
     {
@@ -17,23 +19,33 @@ public class UnitAttack : MonoBehaviour
     
     public void StartAttack(IDamageable to)
     {
-        _attackCoroutine = StartCoroutine(AttackCoroutine(to));
+        if(to == _target) return;
+        _target = to;
+        _attackCoroutine = StartCoroutine(AttackCoroutine());
     }
-
-    private IEnumerator AttackCoroutine(IDamageable to)
+    
+    private IEnumerator AttackCoroutine()
     {
-        while (to.Health > 0)
+        while (_target != null && _target.Health > 0)
         {
             yield return _halfAttackWait;
-            to.TakeDamage(_unit.Damage);
-            Debug.Log($"{name} attacking to:{to}");
+            _target?.TakeDamage(_unit.Damage);
             yield return _halfAttackWait;
         }
     }
-
+    
     public void StopAttack()
     {
-        if(_attackCoroutine != null)
+        _target = null;
+        if (_attackCoroutine != null)
+        {
             StopCoroutine(_attackCoroutine);
+            _attackCoroutine = null;
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAttack();
     }
 } 

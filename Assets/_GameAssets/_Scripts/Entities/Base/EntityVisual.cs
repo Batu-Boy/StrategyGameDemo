@@ -1,8 +1,5 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class EntityVisual : MonoBehaviour
 {
@@ -58,13 +55,13 @@ public class EntityVisual : MonoBehaviour
         }
     }
 
-    public void OnHPChange(float percentage)
+    public void UpdateHpVisual(float percentage)
     {
         DOTween.Kill(this);
-        _hpScaler.DOScaleX(percentage, .5f).SetId(this);
+        _hpScaler.DOScaleX(percentage, .35f).SetId(this);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         DOTween.Kill(this);
     }
