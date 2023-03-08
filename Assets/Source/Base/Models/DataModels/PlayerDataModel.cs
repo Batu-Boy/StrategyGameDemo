@@ -4,7 +4,8 @@ public class PlayerDataModel : DataModel
     public static PlayerDataModel Data;
     public Team PlayerTeam = Team.Green;
     public int LevelIndex;
-
+    public bool HasSaved;
+    
     public PlayerDataModel Load()
     {
         if (Data == null)

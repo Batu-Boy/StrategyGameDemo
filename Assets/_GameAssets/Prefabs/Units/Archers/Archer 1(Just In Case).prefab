@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2393228360990086293, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
       propertyPath: m_Name
-      value: Archer 1
+      value: Archer 1(Just In Case)
       objectReference: {fileID: 0}
     - target: {fileID: 2393228360990086294, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
       propertyPath: type
@@ -87,5 +87,9 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.46480003
       objectReference: {fileID: 0}
+    - target: {fileID: 4436883061480220097, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
+      propertyPath: Type
+      value: 
+      objectReference: {fileID: 11400000, guid: 15a20896f06a9474eb89ba43364550cf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}

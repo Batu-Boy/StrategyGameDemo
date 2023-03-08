@@ -2,231 +2,287 @@
     "list": [
         {
             "index": 0,
-            "name": "Level 0",
-            "M": 10,
-            "N": 10,
-            "K": 2,
-            "A": 1,
-            "B": 2,
-            "C": 3,
-            "LevelRule": {
-                "MoveCount": 99,
-                "GoalList": [
+            "name": "DefaultLevel",
+            "defaultLevel": {
+                "EntityGuids": [
                     {
-                        "BlockColor": 4,
-                        "Count": 100,
-                        "Success": false
-                    }
-                ]
-            },
-            "SelectedColors": [
-                1,
-                4
-            ],
-            "IsRandom": false
-        },
-        {
-            "index": 1,
-            "name": "Level 1",
-            "M": 2,
-            "N": 2,
-            "K": 6,
-            "A": 2,
-            "B": 3,
-            "C": 4,
-            "LevelRule": {
-                "MoveCount": 99,
-                "GoalList": [
-                    {
-                        "BlockColor": 0,
-                        "Count": 2,
-                        "Success": false
+                        "guid": "08e34dd051d9145aa9ca5024769dae3d"
                     },
                     {
-                        "BlockColor": 5,
-                        "Count": 2,
-                        "Success": false
-                    }
-                ]
-            },
-            "SelectedColors": [
-                1,
-                2,
-                3,
-                0,
-                4,
-                5
-            ],
-            "IsRandom": false
-        },
-        {
-            "index": 2,
-            "name": "Level 2",
-            "M": 6,
-            "N": 9,
-            "K": 3,
-            "A": 5,
-            "B": 7,
-            "C": 9,
-            "LevelRule": {
-                "MoveCount": 999,
-                "GoalList": [
-                    {
-                        "BlockColor": 2,
-                        "Count": 300,
-                        "Success": false
+                        "guid": "8cc141e93da5048c89bca0f9858d72d4"
                     },
                     {
-                        "BlockColor": 1,
-                        "Count": 300,
-                        "Success": false
+                        "guid": "8cc141e93da5048c89bca0f9858d72d4"
                     },
                     {
-                        "BlockColor": 3,
-                        "Count": 300,
-                        "Success": false
-                    }
-                ]
-            },
-            "SelectedColors": [
-                2,
-                1,
-                3
-            ],
-            "IsRandom": false
-        },
-        {
-            "index": 3,
-            "name": "Level 3",
-            "M": 6,
-            "N": 6,
-            "K": 6,
-            "A": 3,
-            "B": 4,
-            "C": 5,
-            "LevelRule": {
-                "MoveCount": 50,
-                "GoalList": [
-                    {
-                        "BlockColor": 4,
-                        "Count": 5,
-                        "Success": false
+                        "guid": "15a20896f06a9474eb89ba43364550cf"
                     },
                     {
-                        "BlockColor": 1,
-                        "Count": 5,
-                        "Success": false
-                    }
-                ]
-            },
-            "SelectedColors": [
-                1,
-                3,
-                2,
-                0,
-                4,
-                5
-            ],
-            "IsRandom": false
-        },
-        {
-            "index": 4,
-            "name": "Level 4",
-            "M": 10,
-            "N": 10,
-            "K": 5,
-            "A": 4,
-            "B": 7,
-            "C": 9,
-            "LevelRule": {
-                "MoveCount": 50,
-                "GoalList": [
-                    {
-                        "BlockColor": 0,
-                        "Count": 15,
-                        "Success": false
-                    }
-                ]
-            },
-            "SelectedColors": [
-                1,
-                0,
-                2,
-                3,
-                5
-            ],
-            "IsRandom": false
-        },
-        {
-            "index": 5,
-            "name": "Level 5",
-            "M": 7,
-            "N": 5,
-            "K": 5,
-            "A": 3,
-            "B": 4,
-            "C": 6,
-            "LevelRule": {
-                "MoveCount": 20,
-                "GoalList": [
-                    {
-                        "BlockColor": 5,
-                        "Count": 10,
-                        "Success": false
+                        "guid": "c492f24eb884b4a03bfb4de0bd7e0a04"
                     },
                     {
-                        "BlockColor": 0,
-                        "Count": 10,
-                        "Success": false
-                    }
-                ]
-            },
-            "SelectedColors": [
-                3,
-                5,
-                4,
-                1,
-                0
-            ],
-            "IsRandom": false
-        },
-        {
-            "index": 6,
-            "name": "Level 6",
-            "M": 8,
-            "N": 8,
-            "K": 5,
-            "A": 4,
-            "B": 6,
-            "C": 8,
-            "LevelRule": {
-                "MoveCount": 50,
-                "GoalList": [
-                    {
-                        "BlockColor": 0,
-                        "Count": 10,
-                        "Success": false
+                        "guid": "17df2176041484f2b865bc5810f24654"
                     },
                     {
-                        "BlockColor": 2,
-                        "Count": 10,
-                        "Success": false
+                        "guid": "920e4123d83e4459db87df78b56e8a9b"
                     },
                     {
-                        "BlockColor": 1,
-                        "Count": 10,
-                        "Success": false
+                        "guid": "406228cc84283450e841284de0a6909a"
+                    },
+                    {
+                        "guid": "05fa5023fcd0c418a93ce760d97211d2"
+                    },
+                    {
+                        "guid": "406228cc84283450e841284de0a6909a"
+                    },
+                    {
+                        "guid": "05fa5023fcd0c418a93ce760d97211d2"
+                    },
+                    {
+                        "guid": "c492f24eb884b4a03bfb4de0bd7e0a04"
+                    },
+                    {
+                        "guid": "406228cc84283450e841284de0a6909a"
+                    },
+                    {
+                        "guid": "17df2176041484f2b865bc5810f24654"
+                    },
+                    {
+                        "guid": "15a20896f06a9474eb89ba43364550cf"
+                    },
+                    {
+                        "guid": "08e34dd051d9145aa9ca5024769dae3d"
+                    },
+                    {
+                        "guid": "6db92e19c7d3547feae20379a89697a4"
+                    },
+                    {
+                        "guid": "17df2176041484f2b865bc5810f24654"
+                    },
+                    {
+                        "guid": "c492f24eb884b4a03bfb4de0bd7e0a04"
+                    },
+                    {
+                        "guid": "08e34dd051d9145aa9ca5024769dae3d"
+                    },
+                    {
+                        "guid": "05fa5023fcd0c418a93ce760d97211d2"
+                    },
+                    {
+                        "guid": "c492f24eb884b4a03bfb4de0bd7e0a04"
+                    },
+                    {
+                        "guid": "c492f24eb884b4a03bfb4de0bd7e0a04"
+                    },
+                    {
+                        "guid": "6db92e19c7d3547feae20379a89697a4"
+                    },
+                    {
+                        "guid": "c492f24eb884b4a03bfb4de0bd7e0a04"
+                    },
+                    {
+                        "guid": "c492f24eb884b4a03bfb4de0bd7e0a04"
+                    },
+                    {
+                        "guid": "c492f24eb884b4a03bfb4de0bd7e0a04"
+                    },
+                    {
+                        "guid": "17df2176041484f2b865bc5810f24654"
+                    },
+                    {
+                        "guid": "05fa5023fcd0c418a93ce760d97211d2"
+                    },
+                    {
+                        "guid": "920e4123d83e4459db87df78b56e8a9b"
                     }
+                ],
+                "EntityPositions": [
+                    {
+                        "x": 21,
+                        "y": 37
+                    },
+                    {
+                        "x": 25,
+                        "y": 38
+                    },
+                    {
+                        "x": 39,
+                        "y": 34
+                    },
+                    {
+                        "x": 23,
+                        "y": 34
+                    },
+                    {
+                        "x": 42,
+                        "y": 35
+                    },
+                    {
+                        "x": 21,
+                        "y": 34
+                    },
+                    {
+                        "x": 22,
+                        "y": 35
+                    },
+                    {
+                        "x": 37,
+                        "y": 32
+                    },
+                    {
+                        "x": 37,
+                        "y": 33
+                    },
+                    {
+                        "x": 26,
+                        "y": 35
+                    },
+                    {
+                        "x": 25,
+                        "y": 35
+                    },
+                    {
+                        "x": 36,
+                        "y": 37
+                    },
+                    {
+                        "x": 36,
+                        "y": 32
+                    },
+                    {
+                        "x": 21,
+                        "y": 35
+                    },
+                    {
+                        "x": 36,
+                        "y": 27
+                    },
+                    {
+                        "x": 37,
+                        "y": 43
+                    },
+                    {
+                        "x": 27,
+                        "y": 35
+                    },
+                    {
+                        "x": 37,
+                        "y": 28
+                    },
+                    {
+                        "x": 29,
+                        "y": 41
+                    },
+                    {
+                        "x": 39,
+                        "y": 29
+                    },
+                    {
+                        "x": 25,
+                        "y": 36
+                    },
+                    {
+                        "x": 41,
+                        "y": 38
+                    },
+                    {
+                        "x": 42,
+                        "y": 29
+                    },
+                    {
+                        "x": 37,
+                        "y": 31
+                    },
+                    {
+                        "x": 34,
+                        "y": 40
+                    },
+                    {
+                        "x": 21,
+                        "y": 41
+                    },
+                    {
+                        "x": 39,
+                        "y": 40
+                    },
+                    {
+                        "x": 37,
+                        "y": 27
+                    },
+                    {
+                        "x": 38,
+                        "y": 31
+                    },
+                    {
+                        "x": 37,
+                        "y": 26
+                    }
+                ],
+                "EntityHealths": [
+                    75,
+                    100,
+                    100,
+                    5,
+                    50,
+                    5,
+                    5,
+                    10,
+                    10,
+                    10,
+                    10,
+                    50,
+                    10,
+                    5,
+                    5,
+                    75,
+                    10,
+                    5,
+                    50,
+                    75,
+                    10,
+                    50,
+                    50,
+                    10,
+                    50,
+                    50,
+                    50,
+                    5,
+                    10,
+                    5
+                ],
+                "EntityTeams": [
+                    1,
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    1,
+                    2,
+                    2,
+                    1,
+                    1,
+                    2,
+                    2,
+                    1,
+                    2,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2,
+                    1,
+                    2,
+                    2,
+                    2,
+                    2,
+                    1,
+                    2,
+                    2,
+                    2,
+                    2
                 ]
-            },
-            "SelectedColors": [
-                2,
-                5,
-                3,
-                0,
-                1
-            ],
-            "IsRandom": false
+            }
         }
     ]
 }

@@ -10,7 +10,7 @@ public class SaveDataDebugTools
         if (Application.isPlaying)
         {
             var registryManager = GameObject.FindObjectOfType<RegistryManager>();
-            registryManager.SaveGame();
+            registryManager.E_SaveGame();
         }
     }
 
@@ -20,7 +20,7 @@ public class SaveDataDebugTools
         if (Application.isPlaying)
         {
             var registryManager = GameObject.FindObjectOfType<RegistryManager>();
-            registryManager.LoadGame();
+            registryManager.E_LoadGame();
         }
     }
 

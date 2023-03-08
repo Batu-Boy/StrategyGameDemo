@@ -1,11 +1,11 @@
+using System;
 using UnityEngine;
 
 public class ScreenController : ControllerBase
 {
     [SerializeField] ScreenModel[] screens;
     [SerializeField] int mainScreenIndex;
-    [SerializeField] private int loadingScreenIndex;
-    
+
     private ScreenModel currentScreen;
     private int currentScreenIndex;
 
@@ -51,6 +51,8 @@ public class ScreenController : ControllerBase
     {
         base.OnStateChanged(state);
         if(state == GameStates.Game)
+            ChangeScreen((int)state);
+        else if (state == GameStates.Main)
             ChangeScreen((int)state);
     }
 }

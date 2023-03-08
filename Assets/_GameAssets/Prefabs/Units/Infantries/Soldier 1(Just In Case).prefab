@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2393228360990086293, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
       propertyPath: m_Name
-      value: Soldier 1
+      value: Soldier 1(Just In Case)
       objectReference: {fileID: 0}
     - target: {fileID: 2393228360990086294, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
       propertyPath: type
@@ -83,5 +83,9 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.46480003
       objectReference: {fileID: 0}
+    - target: {fileID: 4436883061480220097, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}
+      propertyPath: Type
+      value: 
+      objectReference: {fileID: 11400000, guid: 406228cc84283450e841284de0a6909a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56665b871ffdd45ab8322f19113b6efb, type: 3}

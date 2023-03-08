@@ -8,34 +8,12 @@ public class LevelModel
 {
     public int index;
     public string name;
-    
-    [Range(ConstantValues.MINROWS,ConstantValues.MAXROWS)] public int Width;   //Rows
-    [Range(ConstantValues.MINCOLUMNS,ConstantValues.MAXCOLUMNS)] public int Height;   //Columns
-    
-    //Later feature
-    [HideInInspector] public bool IsRandom = true;
+    public EntitySaveData defaultLevel;
 
-    public LevelModel(int index, int width, int height)
+    public LevelModel(int index, string name, EntitySaveData defaultLevel)
     {
         this.index = index;
-        Width = width;
-        Height = height;
+        this.name = name;
+        this.defaultLevel = defaultLevel;
     }
-    
-    /*public void SetGrid(Grid grid)
-    {
-        if (grid != null)
-        {
-            M = grid.Rows;
-            N = grid.Columns;
-            
-            Grid = grid;
-
-            IsRandom = false;
-        }
-        else
-        {
-            IsRandom = true;
-        }
-    }*/
 }

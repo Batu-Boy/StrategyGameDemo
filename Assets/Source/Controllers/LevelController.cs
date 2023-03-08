@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -12,7 +13,6 @@ public class LevelController : MonoBase
     public int forceLevelIndex = -1;
 #endif
     [SerializeField] private Object jsonLevels;
-    [FormerlySerializedAs("gridController")] [FormerlySerializedAs("_gridInitializer")] [SerializeField] private GridManager gridManager;
     [SerializeField] private UnityEvent<LevelModel> onLevelLoaded;
     [SerializeField] private LevelList levelModels;
     [SerializeField] private LevelModel EditorLevel;
@@ -40,11 +40,6 @@ public class LevelController : MonoBase
         DeserializeLevels();
         activeLevel = null;
         ClearScene();
-#if UNITY_EDITOR
-        LoadLevel(forceLevelIndex >= 0 ? forceLevelIndex : PlayerDataModel.Data.LevelIndex);
-#else
-        LoadLevel(PlayerDataModel.Data.LevelIndex);
-#endif
     }
     
     private void LoadLevel(int levelIndex)
@@ -86,7 +81,6 @@ public class LevelController : MonoBase
     #endregion
     public void ClearScene()
     {
-        gridManager.ClearGrid();
         EditorLevel = null;
         activeLevel = null;
     }
@@ -109,7 +103,7 @@ public class LevelController : MonoBase
     }
     public void E_SaveLevel()
     {
-        if(EditorLevel == null || EditorLevel.Width < ConstantValues.MINROWS)
+        if(EditorLevel == null)
         {
             Debug.LogWarning("You don't have any level to Save.");
             return;
@@ -140,15 +134,18 @@ public class LevelController : MonoBase
     
     private void SaveToJson(LevelModel level, string path, bool _override = false)
     {
-        if (_override)
-        {
-            levelModels.list.Insert(activeLevel.index, level);
-            levelModels.list.Remove(activeLevel);
-        }
-        else levelModels.list.Add(level);
+        levelModels = new LevelList();
+        levelModels.list = new List<LevelModel>();
+        levelModels.list.Clear();
+        levelModels.list.Add(level);
         JsonHelper.SaveJson(levelModels, path);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+    }
+
+    public void SaveDefaultLevel(LevelModel level)
+    {
+        SaveToJson(level, LevelsPath, true);
     }
 #endif
 }

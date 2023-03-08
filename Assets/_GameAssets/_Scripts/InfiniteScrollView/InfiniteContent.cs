@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class InfiniteContent : MonoBehaviour
 {
-    [SerializeField] private float height;
+    private float height;
     
     private RectTransform rectTransform;
     private RectTransform[] rtChildren;
@@ -27,13 +27,13 @@ public class InfiniteContent : MonoBehaviour
 
     private void SetPositions(float elementHeight, float spacing)
     {
-        float topY = height * 0.5f;
-        float posOffset = elementHeight * 0.5f + spacing;
+        float topY = height * .5f;
+        float posOffset = elementHeight * .5f + spacing;
         for (int i = 0; i < rtChildren.Length; i++)
         {
             Vector2 childPos = rtChildren[i].localPosition;
             childPos.x = 0;
-            childPos.y = topY - posOffset - (i - 1) * (elementHeight + spacing);
+            childPos.y = topY - posOffset - (i - 1) * (elementHeight + spacing);// first one for upper hidden position
             rtChildren[i].localPosition = childPos;
         }
     }

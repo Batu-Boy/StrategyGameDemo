@@ -20,17 +20,23 @@ public class GameController : ControllerBase
     [SerializeField] private bool autoMapControllers;
 
     private GameStates _currentState;
+    private WaitForSeconds mainMenuToggleWait;
+    private bool isStarted;
 
     public override void Initialize()
     {
         base.Initialize();
-        _currentState = GameStates.Main;
         Instance = this;
+        _currentState = GameStates.Main;
+        mainMenuToggleWait = new WaitForSeconds(.5f);
+        EventManager.OnLoadGame.AddListener(StartGame);
+        EventManager.OnNewGame.AddListener(StartGame);
     }
 
     //Tap To Play Event Trigger
     public void StartGame()
     {
+        isStarted = true;
         _currentState = GameStates.Game;
         onGameStateChanged?.Invoke(_currentState);
         OnStateChanged(_currentState);
@@ -57,10 +63,20 @@ public class GameController : ControllerBase
     
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) && isStarted)
+        {
+            ToggleMainMenuState();
+        }
+        
         foreach (var item in controllers)
         {
             item.ControllerUpdate(_currentState);
         }
+    }
+
+    private void ToggleMainMenuState()
+    {
+        ChangeState(_currentState == GameStates.Game ? GameStates.Main : GameStates.Game);
     }
 
     private void FixedUpdate()

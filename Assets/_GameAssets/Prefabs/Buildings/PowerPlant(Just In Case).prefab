@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.54245776
       objectReference: {fileID: 0}
+    - target: {fileID: 2430926526256403545, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2430926526426773035, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -33,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2430926526737883872, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
       propertyPath: m_Name
-      value: PowerPlant
+      value: PowerPlant(Just In Case)
       objectReference: {fileID: 0}
     - target: {fileID: 2430926526737883873, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
       propertyPath: type
@@ -95,5 +99,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3501213404002363371, guid: 6bc32906452094dc980472ebd69cad44, type: 3}
+      propertyPath: Type
+      value: 
+      objectReference: {fileID: 11400000, guid: c492f24eb884b4a03bfb4de0bd7e0a04, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bc32906452094dc980472ebd69cad44, type: 3}

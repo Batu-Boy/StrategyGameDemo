@@ -35,7 +35,7 @@ public class BuildingConstructor : MonoBase
     {
         if(!_hasSelection) return;
         
-        PositionHandler();
+        PositioningHandler();
         
         if (Input.GetMouseButtonDown(0))
         {
@@ -55,7 +55,7 @@ public class BuildingConstructor : MonoBase
         ResetValues();
     }
     
-    private void PositionHandler()
+    private void PositioningHandler()
     {
         var mouseMapPos = InputHelper.GetMouseMapPosition();
         if (mouseMapPos != _currentPosition)
