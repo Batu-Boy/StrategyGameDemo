@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.IO;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MainMenuViewModel : ScreenElement
@@ -29,10 +25,11 @@ public class MainMenuViewModel : ScreenElement
         if(_isClicked) return;
         _isClicked = true;
         print("hasNTLOADED");
+        PlayerDataModel.Data.HasSaved = true;
         EventManager.OnSaveGame?.Invoke();
     }
 
-    public void NewGameButton()
+    private void NewGameButton()
     {
         if(_isClicked) return;
         _isClicked = true;
@@ -41,7 +38,7 @@ public class MainMenuViewModel : ScreenElement
         EventManager.OnNewGame?.Invoke();
     }
     
-    public void LoadGameButton()
+    private void LoadGameButton()
     {
         if(_isClicked) return;
         _isClicked = true;

@@ -7,11 +7,14 @@ public class EventManager : MonoBase
     public static UnityEvent<UnitType> OnUnitUISelected;
     public static UnityEvent<Entity> OnMapEntitySelected;
     public static UnityEvent<CellGrid> OnGridInitialized;
+    public static UnityEvent<Team> OnGameEnd;
+    
     public static UnityEvent OnClear;
     public static UnityEvent OnNewGame;
     public static UnityEvent OnLoadGame;
     public static UnityEvent OnSaveGame;
-
+    public static UnityEvent OnNextLevel;
+    
     public override void Initialize()
     {
         base.Initialize();
@@ -19,10 +22,13 @@ public class EventManager : MonoBase
         OnUnitUISelected = new UnityEvent<UnitType>();
         OnMapEntitySelected = new UnityEvent<Entity>();
         OnGridInitialized = new UnityEvent<CellGrid>();
+        OnGameEnd = new UnityEvent<Team>();
+        
         OnClear = new UnityEvent();
         OnNewGame = new UnityEvent();
         OnLoadGame = new UnityEvent();
         OnSaveGame = new UnityEvent();
+        OnNextLevel = new UnityEvent();
     }
 
     private void OnDestroy()
@@ -31,9 +37,12 @@ public class EventManager : MonoBase
         OnUnitUISelected.RemoveAllListeners();
         OnMapEntitySelected.RemoveAllListeners();
         OnGridInitialized.RemoveAllListeners();
+        OnGameEnd.RemoveAllListeners();
+        
         OnClear.RemoveAllListeners();
         OnNewGame.RemoveAllListeners();
         OnLoadGame.RemoveAllListeners();
         OnSaveGame.RemoveAllListeners();
+        OnNextLevel.RemoveAllListeners();
     }
 }

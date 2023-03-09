@@ -30,7 +30,6 @@ public class GameController : ControllerBase
         EventManager.OnNewGame.AddListener(StartGame);
     }
 
-    //Tap To Play Event Trigger
     public void StartGame()
     {
         isStarted = true;
@@ -48,7 +47,7 @@ public class GameController : ControllerBase
     
     public void EndState(Team winnerTeam)
     {
-        PlayerDataModel.Data.LevelIndex++;
+        EventManager.OnGameEnd?.Invoke(winnerTeam);
         ChangeState(GameStates.End);
     }
     

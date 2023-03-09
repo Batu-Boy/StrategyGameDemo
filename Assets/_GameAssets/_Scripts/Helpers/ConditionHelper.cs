@@ -5,6 +5,7 @@ public static class ConditionHelper
     public static void CheckEnd()
     {
         var entities = RegistryManager.RegisteredEntities;
+        Debug.Log($"COUNT:{entities.Count}");
         if (entities.Count <= 0) return;
 
         Entity firstEntity = entities[0];
@@ -16,7 +17,7 @@ public static class ConditionHelper
                 return;
             }
         }
-        Debug.LogWarning("TEST!");
+        
         GameController.Instance.EndState(firstEntity.Team);
     }
 }

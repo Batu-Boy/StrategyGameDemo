@@ -50,9 +50,6 @@ public class ScreenController : ControllerBase
     public override void OnStateChanged(GameStates state)
     {
         base.OnStateChanged(state);
-        if(state == GameStates.Game)
-            ChangeScreen((int)state);
-        else if (state == GameStates.Main)
-            ChangeScreen((int)state);
+        ChangeScreen((int)state);
     }
 }

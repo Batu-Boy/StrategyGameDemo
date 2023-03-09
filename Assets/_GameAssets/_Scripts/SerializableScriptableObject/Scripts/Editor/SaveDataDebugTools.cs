@@ -9,8 +9,8 @@ public class SaveDataDebugTools
     {
         if (Application.isPlaying)
         {
-            var registryManager = GameObject.FindObjectOfType<RegistryManager>();
-            registryManager.E_SaveGame();
+            var levelController = GameObject.FindObjectOfType<LevelController>();
+            levelController.E_SaveLevel();
         }
     }
 
@@ -19,18 +19,8 @@ public class SaveDataDebugTools
     {
         if (Application.isPlaying)
         {
-            var registryManager = GameObject.FindObjectOfType<RegistryManager>();
-            registryManager.E_LoadGame();
-        }
-    }
-
-    [MenuItem("Tools/Clear All Saves (Binary)")]
-    static void ClearAllSaves()
-    {
-        if (Application.isPlaying)
-        {
-            var registryManager = GameObject.FindObjectOfType<RegistryManager>();
-            registryManager.ClearData();
+            var levelController = GameObject.FindObjectOfType<LevelController>();
+            levelController.E_LoadLevel(0);
         }
     }
 }
