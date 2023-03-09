@@ -1,10 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles infinite scroll view algorithm.
+/// </summary>
 public class InfiniteScrollView : MonoBehaviour , IScrollHandler,IDragHandler,IBeginDragHandler
 {
     [SerializeField] private ScrollRect _scrollRect;
@@ -18,6 +18,10 @@ public class InfiniteScrollView : MonoBehaviour , IScrollHandler,IDragHandler,IB
     private float lowerBound;
     private Vector2 mousePos;
     
+    /// <summary>
+    /// Determine <param name="upperBound"> upper bound for sending upmost element to the bottom</param>
+    /// <param name="lowerBound"> lower bound for sending downmost element to the top </param>
+    /// </summary>
     public void Init()
     {
         _infiniteContent.ArrangeChildren(elementHeight, spacing);
@@ -57,6 +61,10 @@ public class InfiniteScrollView : MonoBehaviour , IScrollHandler,IDragHandler,IB
         }
     }
 
+    /// <summary>
+    /// IF scroll going downwards. check for downmost element is passes the lower bound.
+    /// if it is send it up to the upmost element's above and set it upmost element.
+    /// </summary>
     private void HandleDownwards()
     {
         var downmostElement = _scrollRect.content.GetChild(_scrollRect.content.childCount - 1);
@@ -68,7 +76,10 @@ public class InfiniteScrollView : MonoBehaviour , IScrollHandler,IDragHandler,IB
         downmostElement.localPosition = upPos;
         downmostElement.SetSiblingIndex(0);
     }
-
+    /// <summary>
+    /// IF scroll going upwards. check for upmost element is passes the upper bound.
+    /// if it is send it down to the downmost element's below and set it downmost element.
+    /// </summary>
     private void HandleUpwards()
     {
         var upmostElement = _scrollRect.content.GetChild(0);

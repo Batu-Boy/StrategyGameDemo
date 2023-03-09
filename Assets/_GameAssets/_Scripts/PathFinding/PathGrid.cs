@@ -1,5 +1,8 @@
 using UnityEngine;
-
+    
+/// <summary>
+/// Classic grid with Neighbor Arrangement for cells. for <see cref="PathFinder"/> performance
+/// </summary>
 public class PathGrid
 {
     public readonly int Width;

@@ -34,7 +34,6 @@ public class MainMenuViewModel : ScreenElement
         if(_isClicked) return;
         _isClicked = true;
         _hasLoaded = true;
-        print("newgame");
         EventManager.OnNewGame?.Invoke();
     }
     
@@ -46,7 +45,6 @@ public class MainMenuViewModel : ScreenElement
         
         if (!PlayerDataModel.Data.HasSaved)
         {
-            print("hasnt save");
             _isClicked = false;
             _hasLoaded = false;
             return;
@@ -62,7 +60,7 @@ public class MainMenuViewModel : ScreenElement
 
     private void OnDestroy()
     {
-        print("destroy");
+
         _newGameButton.onClick.RemoveAllListeners();
         _loadGameButton.onClick.RemoveAllListeners();
     }

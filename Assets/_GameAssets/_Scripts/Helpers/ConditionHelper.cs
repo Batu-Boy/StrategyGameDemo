@@ -1,5 +1,7 @@
 using UnityEngine;
-
+/// <summary>
+/// Checks if game end.
+/// </summary>
 public static class ConditionHelper
 {
     public static void CheckEnd()

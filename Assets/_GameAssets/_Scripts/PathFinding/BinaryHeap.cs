@@ -1,17 +1,11 @@
-using System;
-using UnityEngine;
-
 /// <summary>
-/// A min-type priority queue of Nodes
+/// Classic binary heap with some tricks.
+/// Like heap index is in the nodes himselfs. fastest for Contains checks and clearing the heap.
 /// </summary>
 public class BinaryHeap
 {
-    #region Instance variables
-
     HeapNode[] heap;
     int count;
-
-    #endregion
     
     private struct HeapNode
     {
@@ -24,11 +18,7 @@ public class BinaryHeap
             this.node = node;
         }
     }
-
-    /// <summary>
-    /// Creates a new, empty priority queue with the specified capacity.
-    /// </summary>
-    /// <param name="capacity">The maximum number of nodes that will be stored in the queue.</param>
+    
     public BinaryHeap(int capacity)
     {
         heap = new HeapNode[capacity];
@@ -39,13 +29,7 @@ public class BinaryHeap
     {
         return node.heapIndex != ConstantValues.NotInHeap;
     }
-
-    /// <summary>
-    /// Adds an item to the queue.  Is position is determined by its priority relative to the other items in the queue.
-    /// aka HeapInsert
-    /// </summary>
-    /// <param name="item">Item to add</param>
-    /// <param name="priority">Priority value to attach to this item.  Note: this is a min heap, so lower priority values come out first.</param>
+    
     public void Add(PathNode node)
     {
         if (node.heapIndex != ConstantValues.NotInHeap)
@@ -57,29 +41,22 @@ public class BinaryHeap
             Expand();
 
         var item = new HeapNode(node.f, node);
-        // Add the item to the heap in the end position of the array (i.e. as a leaf of the tree)
         int position = count;
         count++;
         heap[position] = item;
         heap[position].node.heapIndex = position;
-        // Move it upward into position, if necessary
         MoveUp(position);
     }
     
-    /// <summary>Expands to a larger backing array when the current one is too small</summary>
+    /// <summary>if heap was small for pathfinding then expand</summary>
     void Expand () {
-        // 65533 == 1 mod 4 and slightly smaller than 1<<16 = 65536
         int newSize = heap.Length + 16;
         var newHeap = new HeapNode[newSize];
         heap.CopyTo(newHeap, 0);
         heap = newHeap;
     }
 
-    /// <summary>
-    /// Extracts the item in the queue with the minimal priority value.
-    /// </summary>
-    /// <returns></returns>
-    public PathNode ExtractMin() // Probably THE most important function... Got everything working
+    public PathNode ExtractMin()
     {
         PathNode minNode = heap[0].node;
         Swap(0, count - 1);
@@ -90,10 +67,8 @@ public class BinaryHeap
     }
 
     /// <summary>
-    /// Moves the node at the specified position upward, it it violates the Heap Property.
-    /// This is the while loop from the HeapInsert procedure in the slides.
+    /// Classic binary heap moving least element to the top.
     /// </summary>
-    /// <param name="position"></param>
     void MoveUp(int position)
     {
         while ((position > 0) && (heap[Parent(position)].F > heap[position].F))
@@ -105,10 +80,8 @@ public class BinaryHeap
     }
 
     /// <summary>
-    /// Moves the node at the specified position down, if it violates the Heap Property
-    /// aka Heapify
+    /// Classic downing an element with big value
     /// </summary>
-    /// <param name="position"></param>
     void MoveDown(int position)
     {
         int lchild = LeftChild(position);
@@ -134,20 +107,14 @@ public class BinaryHeap
             MoveDown(largest);
         }
     }
-
-    /// <summary>
-    /// Number of items waiting in queue
-    /// </summary>
+    
     public int Count
     {
         get { return count; }
     }
-
-    #region Utilities
-
+    
     /// <summary>
-    /// Swaps the nodes at the respective positions in the heap
-    /// Updates the nodes' QueuePosition properties accordingly.
+    /// Changes also heap indexes from nodes. 
     /// </summary>
     void Swap(int position1, int position2)
     {
@@ -156,26 +123,17 @@ public class BinaryHeap
         
         (heap[position1], heap[position2]) = (heap[position2], heap[position1]);
     }
-
-    /// <summary>
-    /// Gives the position of a node's parent, the node's position in the queue.
-    /// </summary>
+    
     static int Parent(int position)
     {
         return (position - 1) / 2;
     }
 
-    /// <summary>
-    /// Returns the position of a node's left child, given the node's position.
-    /// </summary>
     static int LeftChild(int position)
     {
         return 2 * position + 1;
     }
     
-    /// <summary>
-    /// Returns the position of a node's right child, given the node's position.
-    /// </summary>
     static int RightChild(int position)
     {
         return 2 * position + 2;
@@ -188,6 +146,4 @@ public class BinaryHeap
         }
         count = 0;
     }
-    
-    #endregion
 }

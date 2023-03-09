@@ -1,7 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
+/// <summary>
+/// Manages the grids.
+/// Cell grid is for the positioning the entities
+/// Path grid is for the pathfinding.
+/// Seperating them allows us to move whatever we want over or not.
+/// </summary>
 public class GridManager : MonoBase
 {
     public static PathFinder PathFinder;

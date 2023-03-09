@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+    
+/// <summary>
+/// Uses Classic A* algorithm with Binary Heap(for performance).
+/// Also tracks least h cost value for nearest reachable point.
+/// </summary>
 public class PathFinder
 {
     private PathGrid _pathGrid;
@@ -14,7 +18,7 @@ public class PathFinder
         _closedList = new List<PathNode>();
         _openList = new BinaryHeap(128);
     }
-    
+
     public Path FindPath(Vector2Int startPos, Vector2Int endPos)
     {
         var startNode = _pathGrid.GetNode(startPos);

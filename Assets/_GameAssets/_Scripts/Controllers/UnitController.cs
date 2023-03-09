@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
-
+/// <summary>
+/// Controls unit selection, attacking or moving inputs and give orders to units
+/// </summary>
 public class UnitController : MonoBase
 {
     [Header("Options")]

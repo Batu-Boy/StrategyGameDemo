@@ -1,7 +1,10 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+/// <summary>
+/// Base class for all entities(unit,building). Holds data type and other common information.
+/// Clicking actions, Taking damage(from IDamageable), Initializing Type<see cref="EntityType"/>>
+/// </summary>
 [RequireComponent(typeof(EntityVisual))]
 public abstract class Entity: MonoBehaviour, IDamageable
 {

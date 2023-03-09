@@ -1,6 +1,8 @@
-using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Static public event container.
+/// </summary>
 public class EventManager : MonoBase
 {
     public static UnityEvent<BuildingType> OnBuildingUISelected;

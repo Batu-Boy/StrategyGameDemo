@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+/// <summary>
+/// Controls building construction while checking input for building ui clicks on production menu
+/// </summary>
 public class BuildingConstructor : MonoBase
 {
     [SerializeField] private Transform _silhouette;

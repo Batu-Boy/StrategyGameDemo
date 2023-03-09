@@ -1,6 +1,8 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
+/// <summary>
+/// Buildings on the map. 
+/// </summary>
 [RequireComponent(typeof(UnitProducer))]
 public class Building : Entity
 {

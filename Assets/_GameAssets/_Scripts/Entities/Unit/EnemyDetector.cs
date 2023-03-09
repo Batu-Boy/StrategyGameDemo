@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Serialization;
-
+/// <summary>
+/// Detects enemies around with given <see cref="EntityType"/>> range.
+/// </summary>
 public class EnemyDetector : MonoBehaviour
 {
     [SerializeField] private float _detectFrequency;

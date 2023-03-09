@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using UnityEngine;
 
-//TODO: save version
+/// <summary>
+/// Holds List of all entities on the map.
+/// Controled by <see cref="EntityFactory{T}"/> and <see cref="EntityDestroyer"/>
+/// </summary>
 public class RegistryManager : MonoBase
 {
     public static List<Entity> RegisteredEntities { get; private set; }

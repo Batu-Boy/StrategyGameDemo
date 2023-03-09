@@ -1,6 +1,7 @@
-using System;
 using UnityEngine;
-
+/// <summary>
+/// Basic Cell of a grid. holds entity what above it. can be useful for inputs.
+/// </summary>
 public class Cell
 {
     [field: SerializeReference] public Entity Entity { get; set; }

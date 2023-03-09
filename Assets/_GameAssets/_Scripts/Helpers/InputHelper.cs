@@ -1,6 +1,8 @@
-using System;
 using UnityEngine;
-
+/// <summary>
+/// Mouse position input helper class.
+/// Translates mouse pos to grid pos, or map pos.
+/// </summary>
 public static class InputHelper
 {
     public static Vector3Int MouseMapPosition;

@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Unit class of an object in the game map. Responsible for follow orders given by <see cref="UnitController"/>>.
+/// Has 3 different Components for 3 different behaviour. <see cref="UnitMovement"/>> , <see cref="UnitAttack"/>> , <see cref="EnemyDetector"/>>
+/// </summary>
 [RequireComponent(typeof(UnitMovement))]
 [RequireComponent(typeof(UnitAttack))]
 [RequireComponent(typeof(EnemyDetector))]
@@ -51,6 +55,9 @@ public class Unit : Entity
         _movement.Move(targetPosition);
     }
     
+    /// <summary>
+    /// Chasing an Enemy. Follows enemy's position change and recalculates the path
+    /// </summary>
     public void Chase(Entity target)
     {
         if(_target)

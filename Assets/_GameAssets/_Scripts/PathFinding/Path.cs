@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Path that units follow
+/// </summary>
 public class Path
 {
     public List<Vector2Int> WayPoints;

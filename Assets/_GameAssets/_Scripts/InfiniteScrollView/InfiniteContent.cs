@@ -1,10 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
+/// <summary>
+/// Initial positioning elements of infinite scroll view.
+/// <see cref="ArrangeChildren"/>
+/// <seealso cref="InfiniteScrollView"/>
+/// </summary>
 public class InfiniteContent : MonoBehaviour
 {
+    /// <summary>
+    /// Arranges the positions.
+    /// First child position is above hidden position for making algorithm more readable and understandable.
+    /// Arranges the rest downwards to the end.
+    /// </summary>
     public void ArrangeChildren(float elementHeight, float spacing)
     {
         RectTransform rectTransform = GetComponent<RectTransform>();

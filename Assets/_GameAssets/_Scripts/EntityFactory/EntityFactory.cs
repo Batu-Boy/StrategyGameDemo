@@ -1,5 +1,10 @@
 using UnityEngine;
-
+/// <summary>
+/// Responsible for Creating an Entity.
+/// Every code block that needs to create an entity, only needs to call this class.
+/// Initializing entity, Registering and grid placements,
+/// <seealso cref="EntityDestroyer"/>>
+/// </summary>
 public static class EntityFactory<T> where T : Entity
 {
     public static T CreateEntity(EntityType entityType, Vector2Int position, Team team)

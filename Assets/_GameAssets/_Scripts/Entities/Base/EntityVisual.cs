@@ -1,6 +1,8 @@
 using DG.Tweening;
 using UnityEngine;
-
+/// <summary>
+/// Arranges the visual represent of an entity
+/// </summary>
 public class EntityVisual : MonoBehaviour
 {
     [Header("References")]

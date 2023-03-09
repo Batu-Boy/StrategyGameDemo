@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// NOT USED!.
+/// for later can be used for level editor.
+/// </summary>
 public class EditorFactory : MonoBehaviour
 {
     [SerializeField] private Transform _entityParent;

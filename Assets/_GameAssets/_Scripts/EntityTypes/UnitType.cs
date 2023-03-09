@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// Type of a unit from scriptable.
+/// <seealso cref="EntityType"/>
+/// </summary>
 [CreateAssetMenu(fileName = "NewUnitType", menuName = "Create Entity Type/New Unit", order = 0)]
 public class UnitType : EntityType
 {

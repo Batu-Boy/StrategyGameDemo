@@ -24,6 +24,9 @@ public class UnitAttack : MonoBehaviour
         _attackCoroutine = StartCoroutine(AttackCoroutine());
     }
     
+    /// <summary>
+    /// Giving damage to enemy right in the middle of an attack. Can be configurable later for sync with animations.
+    /// </summary>
     private IEnumerator AttackCoroutine()
     {
         while (_target != null && _target.Health > 0)

@@ -1,3 +1,6 @@
+/// <summary>
+/// Controls unit construction while checking input for unit ui clicks on information menu
+/// </summary>
 public class UnitConstructor : MonoBase
 {
     private Building _selectedProducer;

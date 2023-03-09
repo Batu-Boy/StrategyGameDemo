@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+    
+/// <summary>
+/// Basic Pool for Entity Types.
+/// </summary>
 public abstract class EntityPool<T> : MonoBase where T : Entity
 {
     public static EntityPool<T> Instance;
