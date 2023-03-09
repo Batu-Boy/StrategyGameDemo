@@ -2999,9 +2999,8 @@ RectTransform:
   - {fileID: 2031893234}
   - {fileID: 1078851926}
   - {fileID: 1492645661}
-  - {fileID: 1302128899}
   m_Father: {fileID: 2011240330}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6240,7 +6239,7 @@ GameObject:
   - component: {fileID: 1302128901}
   - component: {fileID: 1302128900}
   m_Layer: 5
-  m_Name: Level Text
+  m_Name: Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6253,18 +6252,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302128898}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 646572480}
-  m_RootOrder: 3
+  m_Father: {fileID: 2011240330}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchoredPosition: {x: -204, y: -388.36}
+  m_SizeDelta: {x: 1125.4653, y: 417.7891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1302128900
 MonoBehaviour:
@@ -6286,7 +6285,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 1
+  m_text: 'W,A,S,D for camera movement and SHIFT for camera movement boost.
+
+    
+
+    Since
+    this is a demo. You can select any unit or building on the map and control them.(For
+    showing Chasing mechanic).
+
+    
+
+    But you can only build Green buildings.
+
+    
+
+    You
+    can Chase an enemy if it is moving with right-click on it.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0c9fecf59665c4def8a3d9272d7301bf, type: 2}
   m_sharedMaterial: {fileID: 3000913198690041592, guid: 0c9fecf59665c4def8a3d9272d7301bf, type: 2}
@@ -6313,8 +6327,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 160
-  m_fontSizeBase: 160
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7942,7 +7956,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8542,7 +8556,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1460906437}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 12
+    OrthographicSize: 15
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -8961,6 +8975,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 153168747}
+  - {fileID: 1302128899}
   - {fileID: 646572480}
   m_Father: {fileID: 1375615374}
   m_RootOrder: 0
