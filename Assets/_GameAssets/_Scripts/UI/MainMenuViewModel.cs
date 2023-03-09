@@ -47,6 +47,8 @@ public class MainMenuViewModel : ScreenElement
         if (!PlayerDataModel.Data.HasSaved)
         {
             print("hasnt save");
+            _isClicked = false;
+            _hasLoaded = false;
             return;
         }
         

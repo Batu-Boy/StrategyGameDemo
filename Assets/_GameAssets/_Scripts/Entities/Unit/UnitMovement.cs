@@ -28,7 +28,6 @@ public class UnitMovement : MonoBehaviour
         while (path.WayPoints.Count != 0)
         {
             if(!transform) yield break;
-            print("move step");
             var nextTargetPoint = path.GetNextPoint();
             float distance = Vector3.Distance(nextTargetPoint, transform.position);
             float duration = distance / _unit.MoveSpeed;
