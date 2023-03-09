@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 #if UNITY_EDITOR
@@ -38,6 +40,9 @@ public class LevelController : MonoBase
     private void Init()
     {
         BinarySaveFilePath = $"{Application.persistentDataPath}/Saves/savedata01.dat";
+
+        if (!Directory.Exists(BinarySaveFilePath))
+            Directory.CreateDirectory(BinarySaveFilePath);
         
         EventManager.OnNewGame.AddListener(RestartLevel);
         EventManager.OnLoadGame.AddListener(LoadLevel);
