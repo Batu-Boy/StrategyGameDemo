@@ -28,6 +28,7 @@ public class GameController : ControllerBase
         
         EventManager.OnLoadGame.AddListener(StartGame);
         EventManager.OnNewGame.AddListener(StartGame);
+        EventManager.OnNextLevel.AddListener(StartGame);
     }
 
     public void StartGame()
