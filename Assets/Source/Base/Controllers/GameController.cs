@@ -2,9 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 #if UNITY_EDITOR
-using System.Reflection;
 using UnityEditor;
 #endif
 
@@ -18,17 +16,16 @@ public class GameController : ControllerBase
     [SerializeField] List<ControllerBase> controllers;
     [SerializeField] UnityEvent<GameStates> onGameStateChanged;
     [SerializeField] private bool autoMapControllers;
-
+    
     private GameStates _currentState;
-    private WaitForSeconds mainMenuToggleWait;
     private bool isStarted;
-
+    
     public override void Initialize()
     {
         base.Initialize();
         Instance = this;
         _currentState = GameStates.Main;
-        mainMenuToggleWait = new WaitForSeconds(.5f);
+        
         EventManager.OnLoadGame.AddListener(StartGame);
         EventManager.OnNewGame.AddListener(StartGame);
     }
@@ -49,16 +46,10 @@ public class GameController : ControllerBase
         OnStateChanged(_currentState);
     }
     
-    public void EndState(bool isPlayerWin)
+    public void EndState(Team winnerTeam)
     {
-        IsPlayerWin = isPlayerWin;
+        PlayerDataModel.Data.LevelIndex++;
         ChangeState(GameStates.End);
-        if (isPlayerWin)
-        {
-            PlayerDataModel.Data.LevelIndex++;
-        }
-
-        DOVirtual.DelayedCall(1, () => SceneController.Instance.RestartScene());
     }
     
     private void Update()

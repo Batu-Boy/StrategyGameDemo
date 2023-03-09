@@ -35,13 +35,13 @@ public abstract class Entity: MonoBehaviour, IDamageable
         isDead = false;
         
         _entityVisual.InitVisual(Type.StartWidth, Type.StartHeight, Type.Sprite, Team);
-        _entityVisual.UpdateHpVisual(Health / (float)Type.StartHealth);
     }
     
     public void InitSave(EntityType type, Vector2Int position, int health, Team team)
     {
         InitType(type, position, team);
         Health = health;
+        _entityVisual.UpdateHpVisual(Health / (float)Type.StartHealth);
     }
     
     public void UpdatePosition(Vector2Int position)
@@ -67,6 +67,7 @@ public abstract class Entity: MonoBehaviour, IDamageable
     {
         _currentCell?.Clear();
         _currentCell = null;
+        DeInit();
     }
     
     public void TakeDamage(int amount)
@@ -80,6 +81,8 @@ public abstract class Entity: MonoBehaviour, IDamageable
             Die();
         }
     }
+
+    protected abstract void DeInit();
     
     protected abstract void Die();
 }

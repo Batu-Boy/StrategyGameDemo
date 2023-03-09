@@ -5,30 +5,19 @@ using UnityEngine.Serialization;
 
 public class InfiniteContent : MonoBehaviour
 {
-    private float height;
-    
-    private RectTransform rectTransform;
-    private RectTransform[] rtChildren;
-
     public void ArrangeChildren(float elementHeight, float spacing)
     {
-        rectTransform = GetComponent<RectTransform>();
-        rtChildren = new RectTransform[rectTransform.childCount];
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        RectTransform[] rtChildren = new RectTransform[rectTransform.childCount];
 
         for (int i = 0; i < rectTransform.childCount; i++)
         {
             rtChildren[i] = rectTransform.GetChild(i) as RectTransform;
         }
         
-        height = rectTransform.rect.height;
-
-        SetPositions(elementHeight, spacing);
-    }
-
-    private void SetPositions(float elementHeight, float spacing)
-    {
-        float topY = height * .5f;
+        float topY = rectTransform.rect.height * .5f;
         float posOffset = elementHeight * .5f + spacing;
+        
         for (int i = 0; i < rtChildren.Length; i++)
         {
             Vector2 childPos = rtChildren[i].localPosition;

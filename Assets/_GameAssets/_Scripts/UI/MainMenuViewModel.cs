@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class MainMenuViewModel : ScreenElement
@@ -10,8 +11,8 @@ public class MainMenuViewModel : ScreenElement
     [SerializeField] private Button _loadGameButton;
     [SerializeField] private Button _saveGameButton;
     
-    public bool isClicked;
-    private bool hasLoaded;
+    private bool _isClicked;
+    private bool _hasLoaded;
     
     public override void Initialize()
     {
@@ -23,28 +24,28 @@ public class MainMenuViewModel : ScreenElement
 
     private void SaveButton()
     {
-        if(!hasLoaded) return;
+        if(!_hasLoaded) return;
         
-        if(isClicked) return;
-        isClicked = true;
+        if(_isClicked) return;
+        _isClicked = true;
         print("hasNTLOADED");
         EventManager.OnSaveGame?.Invoke();
     }
 
     public void NewGameButton()
     {
-        if(isClicked) return;
-        isClicked = true;
-        hasLoaded = true;
-print("newgame");
+        if(_isClicked) return;
+        _isClicked = true;
+        _hasLoaded = true;
+        print("newgame");
         EventManager.OnNewGame?.Invoke();
     }
     
     public void LoadGameButton()
     {
-        if(isClicked) return;
-        isClicked = true;
-        hasLoaded = true;
+        if(_isClicked) return;
+        _isClicked = true;
+        _hasLoaded = true;
         
         if (!PlayerDataModel.Data.HasSaved)
         {
@@ -57,7 +58,7 @@ print("newgame");
     
     private void OnEnable()
     {
-        isClicked = false;
+        _isClicked = false;
     }
 
     private void OnDestroy()

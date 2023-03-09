@@ -2584,7 +2584,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 932842336}
-  - {fileID: 1843956709}
   - {fileID: 1235068117}
   m_Father: {fileID: 2032234565}
   m_RootOrder: 0
@@ -3147,6 +3146,7 @@ MonoBehaviour:
   _newGameButton: {fileID: 2031893235}
   _loadGameButton: {fileID: 1078851927}
   _saveGameButton: {fileID: 1492645662}
+  isClicked: 0
 --- !u!1001 &668564543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5030,7 +5030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1040035816
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5068,19 +5068,7 @@ MonoBehaviour:
   - eventID: 4
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 932842335}
-          m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-          m_MethodName: StartGame
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &1040035818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5723,42 +5711,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157182833}
   m_CullTransparentMesh: 1
---- !u!1 &1167424058
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1167424059}
-  m_Layer: 5
-  m_Name: OptionsScreen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1167424059
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167424058}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1375615374}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1213335265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5866,7 +5818,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 495771362}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1235068118
 MonoBehaviour:
@@ -6436,7 +6388,6 @@ RectTransform:
   - {fileID: 2011240330}
   - {fileID: 1121962737}
   - {fileID: 309283790}
-  - {fileID: 1167424059}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6462,7 +6413,6 @@ MonoBehaviour:
   - {fileID: 1121962738}
   - {fileID: 309283792}
   mainScreenIndex: 0
-  loadingScreenIndex: -1
 --- !u!114 &1375615376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8552,7 +8502,6 @@ MonoBehaviour:
   - {fileID: 1990237714}
   - {fileID: 821844660}
   - {fileID: 932842335}
-  - {fileID: 1843956708}
   - {fileID: 1375615375}
   - {fileID: 1235068118}
   initializeOnAwake: 1
@@ -8676,115 +8625,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1829791339}
   m_CullTransparentMesh: 1
---- !u!1 &1843956707
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1843956709}
-  - component: {fileID: 1843956708}
-  m_Layer: 0
-  m_Name: LevelController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1843956708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843956707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd61630461314cbc9bca68ae9bd538d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initializeOnAwake: 0
-  forceLevelIndex: 4
-  jsonLevels: {fileID: 4900000, guid: b128bfe57240549ef9427d3c52b00993, type: 3}
-  onLevelLoaded:
-    m_PersistentCalls:
-      m_Calls: []
-  levelModels:
-    list:
-    - index: 0
-      name: Level 0
-      defaultLevel:
-        EntityGuids: []
-        EntityPositions: []
-        EntityHealths: 
-        EntityTeams: 
-    - index: 1
-      name: Level 1
-      defaultLevel:
-        EntityGuids: []
-        EntityPositions: []
-        EntityHealths: 
-        EntityTeams: 
-    - index: 2
-      name: Level 2
-      defaultLevel:
-        EntityGuids: []
-        EntityPositions: []
-        EntityHealths: 
-        EntityTeams: 
-    - index: 3
-      name: Level 3
-      defaultLevel:
-        EntityGuids: []
-        EntityPositions: []
-        EntityHealths: 
-        EntityTeams: 
-    - index: 4
-      name: Level 4
-      defaultLevel:
-        EntityGuids: []
-        EntityPositions: []
-        EntityHealths: 
-        EntityTeams: 
-    - index: 5
-      name: Level 5
-      defaultLevel:
-        EntityGuids: []
-        EntityPositions: []
-        EntityHealths: 
-        EntityTeams: 
-    - index: 6
-      name: Level 6
-      defaultLevel:
-        EntityGuids: []
-        EntityPositions: []
-        EntityHealths: 
-        EntityTeams: 
-  EditorLevel:
-    index: 0
-    name: 
-    defaultLevel:
-      EntityGuids: []
-      EntityPositions: []
-      EntityHealths: 
-      EntityTeams: 
---- !u!4 &1843956709
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843956707}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 495771362}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1851467425
 PrefabInstance:
   m_ObjectHideFlags: 0

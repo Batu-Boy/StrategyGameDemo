@@ -29,7 +29,7 @@ public class ScreenController : ControllerBase
         var index = (currentScreenIndex + 1) < screens.Length ? currentScreenIndex : mainScreenIndex;
         ChangeScreen(index);
     }
-
+    
     public void ChangeScreen(int index)
     {
         currentScreen.Hide();
@@ -46,7 +46,7 @@ public class ScreenController : ControllerBase
             Debug.LogWarning($"There is no screen with given index {index}! Main screen loaded instead.");
         }
     }
-
+    
     public override void OnStateChanged(GameStates state)
     {
         base.OnStateChanged(state);

@@ -98,7 +98,12 @@ public class Unit : Entity
             _target.onPositionChange -= OnTargetMove;
         _target = null;
     }
-    
+
+    protected override void DeInit()
+    {
+        ClearTarget();
+    }
+
     protected override void Die()
     {
         EntityDestroyer.DestroyEntity(this);

@@ -18,6 +18,11 @@ public class Building : Entity
         _producer.ProduceUnit(unitType, Team);
     }
     
+    protected override void DeInit()
+    {
+        //
+    }
+
     protected override void Die()
     {
         EntityDestroyer.DestroyEntity(this);
