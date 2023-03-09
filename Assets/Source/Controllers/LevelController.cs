@@ -39,7 +39,7 @@ public class LevelController : MonoBase
 
     private void Init()
     {
-        BinarySaveFilePath = $"{Application.persistentDataPath}/Saves/savedata01.dat";
+        BinarySaveFilePath = $"{Application.persistentDataPath}/Saves";
 
         if (!Directory.Exists(BinarySaveFilePath))
             Directory.CreateDirectory(BinarySaveFilePath);
@@ -89,7 +89,7 @@ public class LevelController : MonoBase
     {
         EntitySaveData entitySaveData = new EntitySaveData();
         entitySaveData.SetEntities(RegistryManager.RegisteredEntities);
-        SaveHelper.SaveBinary(BinarySaveFilePath, entitySaveData);
+        SaveHelper.SaveBinary($"{BinarySaveFilePath}/savedata01.dat", entitySaveData);
         PlayerDataModel.Data.HasSaved = true;
     }
     
@@ -100,7 +100,7 @@ public class LevelController : MonoBase
         ClearEntities();
 
         EntitySaveData entitySaveData = new EntitySaveData();
-        SaveHelper.LoadBinary(BinarySaveFilePath, entitySaveData);
+        SaveHelper.LoadBinary($"{BinarySaveFilePath}/savedata01.dat", entitySaveData);
         LoadAdaptor(entitySaveData);
     }
     
