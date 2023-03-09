@@ -5,7 +5,7 @@ public class SaveHelper
 {
     public static void SaveBinary(string filePath, EntitySaveData entitySaveData)
     {
-        using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.OpenOrCreate)))
+        using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.OpenOrCreate,FileAccess.Write)))
         {
             writer.Write(entitySaveData.EntityGuids.Length);
             for (int i = 0; i < entitySaveData.EntityGuids.Length; ++i)
@@ -24,7 +24,7 @@ public class SaveHelper
     
     public static void LoadBinary(string filePath, EntitySaveData entitySaveData)
     {
-        using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open)))
+        using (BinaryReader reader = new BinaryReader(File.Open(filePath, FileMode.Open,FileAccess.Read)))
         {
             var entityCount = reader.ReadInt32();
             entitySaveData.EntityGuids = new Guid[entityCount];
