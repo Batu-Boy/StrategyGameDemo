@@ -31,3 +31,6 @@ LATER FEATURES AND SOLUTIONS
  
  -Saving Versions(not implemented for the same reason)
  Solution: Simply hold seperate data with overriding option.
+ 
+ NOTE: The some of commits from the last day(09.03.2023) is redundant. Their reason is i need to use a separate computer for windows build.
+ Commits from after the end of the deadline is just updating Readme.
